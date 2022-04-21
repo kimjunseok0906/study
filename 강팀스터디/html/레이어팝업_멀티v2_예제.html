@@ -1,0 +1,48 @@
+<!DOCTYPE>
+<html lang="ko">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../css/base.css" rel="stylesheet">
+        <link href="../css/main.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <style>
+            * {margin:0;padding:0}
+			.setDiv {text-align:center}           
+			.wrap {display:none;position:absolute;top:0;left:0;right:0;bottom:0;background-color:#dbdbdb;text-align:center}
+		</style>
+    </head>
+    <body>
+        <div class="setDiv">
+            <a href="#" class="showFull" data-layer-name="layer01">popup1</a>
+            <a href="#" class="showFull" data-layer-name="layer02">popup2</a>
+            <a href="#" class="showFull" data-layer-name="layer03">popup3</a>
+            <a href="#" class="showFull" data-layer-name="layer04">popup4</a>
+        </div>
+        <div class="window" data-layer="layer01">
+            <div class="title"></div>
+        </div>
+    </body>
+        <script type="text/javascript">
+            $(function(){
+                var $wrap = $('<div class="wrap" />')
+                var $window = $('.window').clone();
+                var $close = $('<a href="#" class="close">닫기</a>');
+
+                $('.showFull').click(function(){
+                    $('body').append($wrap);
+                    $wrap.append($window);
+                    $wrap.append($close);
+                    $wrap.show();
+                    var $txt = $(this).text();
+                    $('.wrap .title').text($txt);
+                });
+                
+                $($close).click(function(){
+                    $('.wrap').hide();
+                });
+            });                
+        </script>
+    </body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE>
+<html lang="ko">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <style>
+            .head > li {display:inline-block; position:relative; width:19%; height:100px}
+            .head > li a {display:block; position:absolute}
+            .content > div {height:1000px}
+            .content .con1 {background:red}
+            .content .con2 {background:green}
+            .content .con3 {background:yellow}
+            .content .con4 {background:blue}
+            .content .con5 {background:#000}
+        </style>
+        <script>
+        $(function(){
+            
+            var $wrap = $('.wrap').offset().top
+            var $con1 = $('.con1').offset().top
+            var $con2 = $('.con2').offset().top
+            var $con3 = $('.con3').offset().top
+            var $con4 = $('.con4').offset().top
+            var $con5 = $('.con5').offset().top
+            $(window).scroll(function(){
+                var $scroll = $(window).scrollTop();
+                if($scroll > 0){
+                    $('.head').css('background','blue')
+                }else{
+                    $('.head').css('background','white')
+                }
+            })
+            $('.btn1').click(function(){
+                $('html body').animate({scrollTop:$con1},100);
+            })
+            $('.btn2').click(function(){
+                $('html body').animate({scrollTop:$con2},100);
+            })
+            $('.btn3').click(function(){
+                $('html body').animate({scrollTop:$con3},100);
+            })
+            $('.btn4').click(function(){
+                $('html body').animate({scrollTop:$con4},100);
+            })
+            $('.btn5').click(function(){
+                $('html body').animate({scrollTop:$con5},100);
+            })
+            $('.head .tit1').on('mouseover focusin', function(){
+                $(this).stop().animate({
+                    top: '-100%'
+                },300, function(){
+                    $this.stop().animate({top: '100%'}).stop(true,true).animate({top: '0'},600)
+                })
+            })
+            $('.head .tit1').on('mouseleave focusout', function(){
+                $(this).animate({
+                    top:'0px'
+                },1000)
+            })
+        });
+        </script>
+    </head>
+    <body>
+        <div class="wrap">
+            <div class="head">
+                <li><a href="#" class="btn1 tit1">title</a></li>
+                <li><a href="#" class="btn1">button</a></li>
+                <li><a href="#" class="btn2">button</a></li>
+                <li><a href="#" class="btn3">button</a></li>
+                <li><a href="#" class="btn4">button</a></li>
+            </div>
+            <div class="content">
+                <div class="con1"></div>
+                <div class="con2"></div>
+                <div class="con3"></div>
+                <div class="con4"></div>
+                <div class="con5"></div>
+            </div>
+        </div>
+
+        레이어팝업
+
+        1. 풀팝업
+         - 화면을 Full 팝업
+         1) 버튼을 클릭했을때 해당 팝업이 노출된다.
+            show, fadeIn, fadeOut 등등
+         2) 포커스가 레이어 안에서만 돌아야된다
+            focus(), blur(), keyup, keydown, function(e), e.keyCode, tabindex
+         3) 닫기 버튼을 눌렀을때 팝업 노출을 시켰던 버튼으로 다시 포커스가 가야한다.
+
+        2. 모달레이어팝업
+         - 딤이 있는 팝업
+         - 화면의 가운데에 노출되어야한다.
+         - 화면의 사이즈가 레이어팝업보다 작을때 :
+         1) 레이어팝업은 화면의 최상단에 붙는다.
+         2) 전체 높이, 전체 너비의 한가운데에 뜨고, 화면의 스크롤을 조절해서 레이어팝의 최상단으로 화면을 맞춘다
+
+        3. 팝업 구성 방법
+         1) 팝업의 본문만 두고, 껍데기는 가상으로 그려준다.
+         2) html에 팝업의 모든 내용을 다 넣어두고 노출만 시킨다.
+         3) 버튼과 레이어팝업의 매칭방법 (팝업이 여러개일때)
+         4) 팝업안에 팝업 (딤 중복되면 안됨)
+    </body>
+</html>

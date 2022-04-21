@@ -1,0 +1,54 @@
+<!DOCTYPE>
+<html lang="ko">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../css/base.css" rel="stylesheet">
+        <link href="../css/main.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <style>
+            .layer01 {display:none; position:fixed; top:50%; left:50%}
+            .inner {width:500px; height:500px; border:1px solid #000}
+		</style>
+    </head>
+    <body>  
+            <div class="inner">
+
+            </div>
+            <div class="layer01">
+                <div class="aa window01">
+                    팝업1
+                    <input type="button" href="#" class="close" value="닫기" onClick=""/>
+                </div>
+            </div>
+            <script>
+                $(function(){
+                    function wrapWindowByMask(){
+                        var maskHeight = $(document).height();
+                        var maskWidth = $(window).width();
+
+
+                        var top = ($(window).scrollTop() + ( $(window).height() - $('.aa').height()) / 2);
+                        var left = ($(window).scrollLeft() + ( $(window).width() - $('.aa').width()) / 2);
+                        $('.layer01').show();
+                    }
+
+                    myTimer = setInterval(wrapWindowByMask, 5000);
+                    
+
+                    $('.inner').click(function(){
+                        clearInterval(myTimer)
+                        myTimer = setInterval(wrapWindowByMask, 5000);
+                    })
+
+                    $('.close').click(function(){
+                        $('.layer01').hide();
+                        clearInterval(myTimer)
+                    })
+                    
+
+                })
+            </script>
+    </body>
+</html>

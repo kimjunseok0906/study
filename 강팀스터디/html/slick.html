@@ -1,0 +1,83 @@
+<!DOCTYPE>
+<html lang="ko">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../css/slick.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="../js/slick.js"></script>
+        <style>
+           .sliderTest {width:100%; height:300px}
+           .sliderTest div {color:#000}
+           .slick-dots li {display:inline-block}
+           .on {background:red}
+           .unslide {margin-top:100px}
+		</style>
+    </head>
+    <body>
+        과제 : 자동재생 초기 설정하기, 재생/정지 버튼 만들기 
+               트윈맥스 html에 연결해보기(to, from, fromTo)
+               slick안에서 트윈맥스 사용하기
+                - 초기 실행될때 첫번쨰 슬라이드의 텍스트가 fadeIn 효과처럼 위치값, opacity 모션주기
+                - 슬라이드를 넘길때 맏 배경색 바꾸기
+                - 슬라이드를 넘길때마다 해당 슬라이드별로 본인이 넣고싶은 모션을 각각 넣기
+                  예로 1번은 텍스트, 2번인 텍스트 크기
+        <div class="sliderTest">
+            <div><h1>1</h1></div>
+            <div><h1>2</h1></div>
+            <div><h1>3</h1></div>
+            <div><h1>4</h1></div>
+            <div><h1>5</h1></div>
+            <div><h1>6</h1></div>
+            <div><h1>7</h1></div>
+            <div><h1>8</h1></div>
+            <div><h1>9</h1></div>
+            <div><h1>10</h1></div>
+            <div><h1>11</h1></div>
+            <div><h1>12</h1></div>
+        </div>
+        <button class="unslide">unslide</button>
+        <script>
+            $(document).ready(function(){
+                $('.sliderTest').slick({
+                    dots: true,
+                    infinite: false,
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    arrows:true
+                });
+                var defalut = {
+                    dots: true,
+                    infinite: false,
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    arrows:true
+                }
+
+                $('.sliderTest').on('beforeChange',function(event, slick, currentSlide, nextSlide){
+                    console.log(slick)
+                });
+
+                $('.sliderTest').on('afterChange',function(event, slick, currentSlide){
+                    var $slide = $(slick.$slides)
+                    var $current = $(slick.$slides.get(currentSlide))
+                    $($slide).removeClass('on')
+                    $($current).addClass('on')
+                });
+                
+                $('.unslide').on('click', function(){
+                    var $this = $(this);
+                    var $sliderTest = $('.sliderTest');
+                    
+                    if($sliderTest.hasClass('slick-initialized')){
+                        $sliderTest.slick('unslick')
+                    }else{
+                        $sliderTest.slick(defalut)
+                    }
+
+                })
+            });
+        </script>
+    </body>
+</html>

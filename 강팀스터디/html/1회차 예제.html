@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <style>
+    td{border:1px solid #000}    
+  </style>
+</head>
+<body>
+  <table class="aa">
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+  <script>
+      var num = 1
+      document.write('<table>')
+      for(i=1; i<=5; i++){
+      document.write('<tr>')
+          for(k=1; k<=5; k++){
+            document.write('<td style="border:1px solid red">'+num+'</td>')
+            num++
+          }
+      document.write('</tr>')
+      }
+      document.write('</table>')
+      
+      
+      
+
+      var z,x;
+      for(z = 2; z < 10; z++){   
+        for(x = 1; x < 10; x++){
+          document.write(z + 'x' + x + '=' + (z * x) + '<br>')
+        }
+      }
+
+      for(val = 0, sum = 0; val <= 100; val++){
+          sum += val
+        }
+        document.write('1부터 100 합은' +sum+ '입니다')
+      
+      $(function(){
+        
+          $('.aa td').each(function(e, i){
+            $(i).text(e+1)
+          })
+      });
+        
+        
+        
+      
+    
+  </script>
+</body>
+</html>

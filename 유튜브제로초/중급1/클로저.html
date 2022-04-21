@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style>
+
+    </style>
+</head>
+<body>
+    
+    <script>
+        // new Promise(function(resolve, reject){
+        // setTimeout(function() {
+        //     resolve(1);
+        // }, 2000);
+        // })
+        // .then(function(result) {
+        // console.log(result); // 1
+        // return result + 10;
+        // })
+        // .then(function(result) {
+        // console.log(result); // 11
+        // return result + 20;
+        // })
+        // .then(function(result) {
+        // console.log(result); // 31
+        // });
+
+        // for(var i = 0; i < 100; i++){
+        //     setTimeout(function(){
+        //         console.log(i)
+        //     }, i * 1000)
+        // }
+
+        // for(var i = 0; i < 100; i++){
+        //     function 클로저(j){
+        //         setTimeout(function(){
+        //             console.log(j)
+        //         }, j * 1000)
+        //     }
+        //     클로저(i);
+        // }
+
+        for(let i = 0; i < 100; i++){
+            setTimeout(function(){
+                console.log(i)
+            }, i * 1000)
+        }
+    </script>
+</body>
+</html>

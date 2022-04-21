@@ -1,0 +1,494 @@
+<!DOCTYPE>
+<html lang="ko">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <style>
+            * {margin:0; padding:0}
+            ul, li {list-style:none}
+            a {color:000; text-decoration:none}
+            div {margin:10px}
+            td {padding:5px; border:1px solid red}
+            
+            .tabWrap li.on a {color:red}
+            .tabWrap > div {display:none}
+            .tabWrap > div.on {display:block}
+            .tabWrap ul:after {display:block; clear:both; content:""}
+            .tabWrap li {float:left; margin-left:10px}
+            .tabWrap .tabInArea {display:none}
+            .tabWrap .tabInArea.on {display:block}
+            .tabWrap .select a.on {color:blue}
+            .tabWrap .detail {display:none}
+            .tabWrap .detail.on {display:block}
+
+            .accordion {width:500px; margin:30px; text-align:center;}
+            .accordion a {display:inline-block; width:100%; line-height:30px; color:#fff;}
+            .accordion .orange {background:rgb(150, 136, 110);}
+            .accordion .gray {background:#666;}
+            .accordion .box {display:none; height:200px; padding:10px; border:1px solid #e0e0e0;}
+            li.on .box {display:block}
+            .btnArea {text-align:center}
+
+            .chk .all label {padding-left:15px; margin-left:-15px}
+        </style>
+        <script>
+            $(function(){
+
+                //탭
+                function tab(){
+                    $('.tabWrap > ul > li').on('click', function(e){
+                        $(this).closest('.tabWrap').find('.tabInner').eq($(this).index()).addClass('on').siblings().removeClass('on');
+                        $(this).parent().find('li').removeClass('on');
+                        $(this).siblings().children('a').prop('title','');
+                        $(this).addClass('on');
+                        $(this).children('a').prop('title','현재페이지');
+                        e.preventDefault()
+                    });
+                    
+                    $('.tabInner > ul > li > a').on('click', function(e){
+                        var $link = $(this);
+                        var $target = $($link.attr('href'));
+                        $link.parents('.tabInner').find('.select a').removeClass('on');
+                        $link.addClass('on');
+                        $link.parents('.tabInner').find('.detail').removeClass('on');
+                        $link.parents('.tabInner').find($target).addClass('on');
+                        e.preventDefault();
+                    
+                    });
+                }
+                tab()
+
+
+                //아코디언
+                 function acc(){
+                    $('.accordion a').on('click', function(e){
+                        var item = $(this).parent();
+                        if($(item).hasClass('on')){
+                            $(item).removeClass('on');
+                        }else{
+                            $(item).siblings().removeClass('on');
+                            $(item).addClass('on');
+                        };
+                        e.preventDefault()
+                    });
+
+                    $('.allOpen').on('click', function(e){
+                        $(this).parent().parent('.accordion').find('ul > li').addClass('on')
+                    });
+                    $('.allClose').on('click', function(e){
+                        $(this).parent().parent('.accordion').find('ul > li').removeClass('on')
+                    })
+                }
+                acc()
+                
+                //체크박스
+                $(function(){
+                    $('#chk00').on('click',function(){
+                        if($('#chk00').prop('checked')){
+                            $('input[name=dd]').prop('checked',true)
+                        }else{
+                            $('input[name=dd]').prop('checked',false)
+                        }
+                    })
+                })
+                // function chk(){
+                //     $('.all label').on('click',function(){
+                //         $(this).toggleClass('on');
+
+                //         if($(this).hasClass('on')){
+                //             $(this).closest('.chk').find('.zz').prop('checked',true)
+                //         }else{
+                //             $(this).closest('.chk').find('.zz').prop('checked',false)
+                //         }
+                //     });
+                // }
+                // chk()
+
+                $.each(function(i){
+                    $('.aa').text(i)
+                })
+                
+                
+            })
+        </script>
+    </head>
+    <body>
+        <div>
+            <p>테이블이 여러개일때에도 각각의 테이블에 1~25까지 숫자 입력</p>
+            <script>
+                function test(){
+                var index = 0;
+                document.write('<table>');
+                for(i = 0;i < 6;i++){
+                    document.write('<tr>');
+                        for(j = 0;j < 5;j++){
+                            document.write('<td>'+index+'</td>');
+                            index++;
+                        }
+                        document.write('</tr>');
+                    }
+                    document.write('</table>'+'<br>');
+                }
+                test()
+                test()
+                test()
+            </script>
+        </div>
+
+        <div class="group">
+        <p>테이블이 여러개일때에도 각각의 테이블에 1~25까지 숫자 입력</p>
+            <table class="aa">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+            <br>
+            <table class="aa">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+            <script>
+            </script>
+        </div>
+
+        <div class="tabWrap">
+            <p>기본탭</p>
+            <ul>
+                <li class="on"><a href="#" title="현재페이지">제목1</a></li>
+                <li><a href="#">제목2</a></li>
+                <li><a href="#">제목3</a></li>
+            </ul>
+            <div class="tabInner on">
+                내용1
+            </div>
+            <div class="tabInner">
+                내용2
+            </div>
+            <div class="tabInner">
+                내용3
+            </div>
+        </div>
+
+        <div class="tabWrap">
+            <p>탭 안에 탭</p>
+            <ul>
+                <li class="on"><a href="#">탭1</a></li>
+                <li><a href="#">탭2</a></li>
+                <li><a href="#">탭3</a></li>
+                <li><a href="#">탭4</a></li>
+            </ul>
+            <div class="tabInner on">
+                <ul class="select">
+                    <li><a href="#select01" class="on">탭1-1</a></li>
+                    <li><a href="#select02">탭1-2</a></li>
+                    <li><a href="#select03">탭1-3</a></li>
+                    <li><a href="#select04">탭1-4</a></li>
+                </ul>
+                <div id="select01" class="detail on">
+                    탭 1-1 내용
+                </div>
+                <div id="select02" class="detail">
+                    탭 1-2 내용
+                </div>
+                <div id="select03" class="detail">
+                    탭 1-3 내용
+                </div>
+                <div id="select04" class="detail">
+                    탭 1-4 내용
+                </div>
+            </div>
+            <div class="tabInner">
+                <ul class="select">
+                    <li><a href="#select05" class="on">탭2-1</a></li>
+                    <li><a href="#select06">탭2-2</a></li>
+                    <li><a href="#select07">탭2-3</a></li>
+                    <li><a href="#select08">탭2-4</a></li>
+                </ul>
+                <div id="select05" class="detail on">
+                    탭 2-1 내용
+                </div>
+                <div id="select06" class="detail">
+                    탭 2-2 내용
+                </div>
+                <div id="select07" class="detail">
+                    탭 2-3 내용
+                </div>
+                <div id="select08" class="detail">
+                    탭 2-4 내용
+                </div>
+            </div>
+            <div class="tabInner">
+                <ul class="select">
+                    <li><a href="#select09" class="on">탭3-1</a></li>
+                    <li><a href="#select10">탭3-2</a></li>
+                    <li><a href="#select11">탭3-3</a></li>
+                    <li><a href="#select12">탭3-4</a></li>
+                </ul>
+                <div id="select09" class="detail on">
+                    탭 3-1 내용
+                </div>
+                <div id="select10" class="detail">
+                    탭 3-2 내용
+                </div>
+                <div id="select11" class="detail">
+                    탭 3-3 내용
+                </div>
+                <div id="select12" class="detail">
+                    탭 3-4 내용
+                </div>
+            </div>
+            <div class="tabInner">
+                <ul class="select">
+                    <li><a href="#select13" class="on">탭4-1</a></li>
+                    <li><a href="#select14">탭4-2</a></li>
+                    <li><a href="#select15">탭4-3</a></li>
+                    <li><a href="#select16">탭4-4</a></li>
+                </ul>
+                <div id="select13" class="detail on">
+                    탭 4-1 내용
+                </div>
+                <div id="select14" class="detail">
+                    탭 4-2 내용
+                </div>
+                <div id="select15" class="detail">
+                    탭 4-3 내용
+                </div>
+                <div id="select16" class="detail">
+                    탭 4-4 내용
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <p>탭이 여러개일때 탭 안에 탭</p>
+            <div class="tabWrap">
+                <ul>
+                    <li class="on"><a href="#" title="현재페이지">제목1</a></li>
+                    <li><a href="#">제목2</a></li>
+                    <li><a href="#">제목3</a></li>
+                </ul>
+                <div class="tabInner on">
+                    내용1
+                </div>
+                <div class="tabInner">
+                    내용2
+                </div>
+                <div class="tabInner">
+                    내용3
+                </div>
+            </div>
+
+            <div class="tabWrap">
+                <ul>
+                    <li class="on"><a href="#" title="현재페이지">제목1</a></li>
+                    <li><a href="#">제목2</a></li>
+                    <li><a href="#">제목3</a></li>
+                </ul>
+                <div class="tabInner on">
+                    내용1
+                </div>
+                <div class="tabInner">
+                    내용2
+                </div>
+                <div class="tabInner">
+                    내용3
+                </div>
+            </div>
+
+            <div class="tabWrap">
+                <ul>
+                    <li class="on"><a href="#">탭1</a></li>
+                    <li><a href="#">탭2</a></li>
+                    <li><a href="#">탭3</a></li>
+                    <li><a href="#">탭4</a></li>
+                </ul>
+                <div class="tabInner on">
+                    <ul class="select">
+                        <li><a href="#select21" class="on">탭1-1</a></li>
+                        <li><a href="#select22">탭1-2</a></li>
+                        <li><a href="#select23">탭1-3</a></li>
+                        <li><a href="#select24">탭1-4</a></li>
+                    </ul>
+                    <div id="select21" class="detail on">
+                        탭 1-1 내
+                    </div>
+                    <div id="select22" class="detail">
+                        탭 1-2 내용
+                    </div>
+                    <div id="select23" class="detail">
+                        탭 1-3 내용
+                    </div>
+                    <div id="select24" class="detail">
+                        탭 1-4 내용
+                    </div>
+                </div>
+                <div class="tabInner">
+                    <ul class="select">
+                        <li><a href="#select25" class="on">탭2-1</a></li>
+                        <li><a href="#select26">탭2-2</a></li>
+                        <li><a href="#select27">탭2-3</a></li>
+                        <li><a href="#select28">탭2-4</a></li>
+                    </ul>
+                    <div id="select25" class="detail on">
+                        탭 2-1 내용
+                    </div>
+                    <div id="select26" class="detail">
+                        탭 2-2 내용
+                    </div>
+                    <div id="select27" class="detail">
+                        탭 2-3 내용
+                    </div>
+                    <div id="select28" class="detail">
+                        탭 2-4 내용
+                    </div>
+                </div>
+                <div class="tabInner">
+                    <ul class="select">
+                        <li><a href="#select29" class="on">탭3-1</a></li>
+                        <li><a href="#select30">탭3-2</a></li>
+                        <li><a href="#select31">탭3-3</a></li>
+                        <li><a href="#select32">탭3-4</a></li>
+                    </ul>
+                    <div id="select29" class="detail on">
+                        탭 3-1 내용
+                    </div>
+                    <div id="select30" class="detail">
+                        탭 3-2 내용
+                    </div>
+                    <div id="select31" class="detail">
+                        탭 3-3 내용
+                    </div>
+                    <div id="select32" class="detail">
+                        탭 3-4 내용
+                    </div>
+                </div>
+                <div class="tabInner">
+                    <ul class="select">
+                        <li><a href="#select33" class="on">탭4-1</a></li>
+                        <li><a href="#select34">탭4-2</a></li>
+                        <li><a href="#select35">탭4-3</a></li>
+                        <li><a href="#select36">탭4-4</a></li>
+                    </ul>
+                    <div id="select33" class="detail on">
+                        탭 4-1 내용
+                    </div>
+                    <div id="select34" class="detail">
+                        탭 4-2 내용
+                    </div>
+                    <div id="select35" class="detail">
+                        탭 4-3 내용
+                    </div>
+                    <div id="select36" class="detail">
+                        탭 4-4 내용
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <p>아코디언</p>
+            <div class="accordion">
+                <div class="btnArea">
+                    <button type="button" class="allOpen">전체펼침</button>
+                    <button type="button" class="allClose">전체닫힘</button>
+                </div>
+                <ul>
+                    <li class="on">
+                        <a href="#" class="orange">title01</a>
+                        <div class="box">content01</div>
+                    </li>
+                    <li>
+                        <a href="#" class="gray">title02</a>
+                        <div class="box">content02</div>
+                    </li>
+                    <li>
+                        <a href="#" class="orange">title03</a>
+                        <div class="box">content03</div>
+                    </li>
+                    <li>
+                        <a href="#" class="gray">title04</a>
+                        <div class="box">content04</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="chk">
+            <p>체크박스 전체 선택 전체해제</p>
+            <div class="all">
+                <input type="checkbox" id="chk00"><label for="chk00">전체동의</label>
+            </div>
+            <input type="checkbox" class="zz" name="dd" id="chk01"><label for="chk01">동의1</label>
+            <input type="checkbox" class="zz" name="dd" id="chk02"><label for="chk02">동의2</label>
+            <input type="checkbox" class="zz" name="dd" id="chk03"><label for="chk03">동의3</label>
+            <input type="checkbox" class="zz" name="dd" id="chk04"><label for="chk04">동의4</label>
+        </div>
+    </body>
+</html>

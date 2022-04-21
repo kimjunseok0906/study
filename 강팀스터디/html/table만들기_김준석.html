@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- <script src="../js/jquery-1.11.0.min.js"></script> -->
+  <style>
+    td{border:1px solid red}    
+  </style>
+</head>
+<body>
+  1. 순서
+  2. 문자로 넣는 방법
+  <script>
+      var num = 1
+      document.write('<table>')
+      for(i=1; i<=5; i++){
+      document.write('<tr>')
+          for(k=1; k<=5; k++){
+      document.write('<td style="border:1px solid red">'+num+'</td>')
+      num++
+          }
+      document.write('</tr>')
+      }
+      document.write('</table>')
+    
+  </script>
+</body>
+</html>

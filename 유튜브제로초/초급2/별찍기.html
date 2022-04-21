@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <script>
+        for(var star = 0; star < 5; star++) {
+            console.log('*'.repeat(star)) // star 변수값 0으로 넣었을때
+        };
+
+        for(var star1 = 1; star1 <= 5; star1++) {
+            console.log('*'.repeat(star1)) // 1개씩 증가
+        };
+
+        for(var star2 = 4; star2 >= 1; star2--) {
+            console.log('*'.repeat(star2)) // 1개씩 감소
+        };
+
+        for(var star3 = 10; star3 >= 2; star3 = star3 - 2) {
+            console.log('*'.repeat(star3)) // 2개씩 감소
+        };
+
+        for(var star4 = 1; star4 <= 16; star4 *= 2) {
+            console.log('*'.repeat(star4)) // 2배씩 증가
+        };
+
+        for(var star5 = 5; star5 >= 1; star5--) {
+            console.log(' '.repeat(5 - star5) + '*'.repeat(star5)) // 앞에 공백 생기면서 1개씩 감소
+        };
+
+        for(var star6 = 9; star6 >= 1; star6 -= 2) {
+            console.log(' '.repeat((9-star6) / 2) + '*'.repeat(star6)) // 양쪽에 공백 생기면서 2개씩 감소
+        };
+
+        for(var star7 = 9; star7 >= 1; star7 -= 2) {
+            console.log(' '.repeat((9-star7) / 2) + '*'.repeat(star7)) // 양쪽에 공백 생기면서 2개씩 감소
+        };
+    </script>
+</head>
+<body>
+    
+
+</body>
+</html>

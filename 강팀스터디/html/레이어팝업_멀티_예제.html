@@ -1,0 +1,80 @@
+<!DOCTYPE>
+<html lang="ko">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../css/base.css" rel="stylesheet">
+        <link href="../css/main.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <style>
+            * {margin:0;padding:0}
+			.setDiv {text-align:center}           
+			.lay {display:none;position:absolute;top:0;left:0;right:0;bottom:0;background-color:#dbdbdb;text-align:center}
+            .lay ul {margin-top:100px}
+            .lay li a {padding-left:10px}
+            .lay li a:first-child {padding-left:0px}
+            .close {margin-top:10px}
+		</style>
+    </head>
+    <body>
+        <div class="setDiv">
+            <a href="#" class="showFull" onClick="layerPop($('.window01'), 'on')">풀 레이어팝업1</a>
+            <a href="#" class="showFull" onClick="layerPop($('.window02'), 'on')">풀 레이어팝업2</a>
+            <a href="#" class="showFull" onClick="layerPop($('.window03'), 'on')">풀 레이어팝업3</a>
+            <a href="#" class="showFull" onClick="layerPop($('.window04'), 'on')">풀 레이어팝업4</a>
+        </div>
+        <div class="lay window01">
+            <ul>
+                <li>
+                    <a href="#">링크1</a>
+                    <a href="#">링크1</a>
+                </li>
+            </ul>
+            <input type="text" class="txt">
+            <input type="button" href="#" class="close" value="닫기" onClick="layerPop($('.window01'), 'off')"/>
+        </div>
+        <div class="lay window02">
+            <ul>
+                <li>
+                    <a href="#">링크2</a>
+                    <a href="#">링크2</a>
+                </li>
+            </ul>
+            <input type="text" class="txt">
+            <input type="button" href="#" class="close" value="닫기" onClick="layerPop($('.window02'), 'off')"/>
+        </div>
+        <div class="lay window03">
+            <ul>
+                <li>
+                    <a href="#">링크3</a>
+                    <a href="#">링크3</a>
+                </li>
+            </ul>
+            <input type="text" class="txt">
+            <input type="button" href="#" class="close" value="닫기" onClick="layerPop($('.window03'), 'off')"/>
+        </div>
+        <div class="lay window04">
+            <ul>
+                <li>
+                    <a href="#">링크4</a>
+                    <a href="#">링크4</a>
+                </li>
+            </ul>
+            <input type="text" class="txt">
+            <input type="button" href="#" class="close" value="닫기" onClick="layerPop($('.window04'), 'off')"/>
+        </div>
+    </body>
+        <script type="text/javascript">
+            function layerPop(obj,s){
+                if(s === 'on'){
+                    obj.fadeIn(500);
+                }
+                if(s === 'off'){
+                    obj.fadeOut(500);
+                } 
+            }
+            layerPop()
+        </script>
+    </body>
+</html>

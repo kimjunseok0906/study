@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <script>
+       
+    </script>
+</head>
+<body>
+    
+    <script>
+        while(true){
+            var 숫자1 = Math.ceil(Math.random() * 9);
+            var 숫자2 = Math.ceil(Math.random() * 9);
+            var 결과 = 숫자1 * 숫자2;
+            var 조건 = true;
+            while(조건){
+                var 답 = prompt(숫자1 + 'x' + 숫자2 + '답은?');
+                if(결과 === Number(답)){
+                    alert('정답입니다!');
+                    조건 = false;
+                }else{
+                    alert('틀렸습니다.')
+                }
+            }
+        }
+    </script>
+</body>
+</html>

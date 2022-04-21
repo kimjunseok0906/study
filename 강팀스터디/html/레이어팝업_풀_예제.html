@@ -1,0 +1,50 @@
+<!DOCTYPE>
+<html lang="ko">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../css/base.css" rel="stylesheet">
+        <link href="../css/main.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <style>
+            * {margin:0;padding:0}
+			.setDiv {text-align:center}           
+			.window {display:none;position:absolute;top:0;left:0;right:0;bottom:0;background-color:#dbdbdb;text-align:center}
+            .window ul {margin-top:100px}
+            .window li a {padding-left:10px}
+            .window li a:first-child {padding-left:0px}
+            .close {margin-top:10px}
+		</style>
+    </head>
+    <body>
+        <div class="setDiv">
+            <a href="#" class="showFull">풀 레이어팝업 띄우기</a>
+        </div>
+        <div class="window">
+            <ul>
+                <li>
+                    <a href="#">링크1</a>
+                    <a href="#">링크2</a>
+                    <a href="#">링크3</a>
+                </li>
+            </ul>
+            <input type="text" class="txt">
+            <input type="button" href="#" class="close" value="닫기"/>
+        </div>
+    </body>
+        <script type="text/javascript">
+            function layerPop(){
+                $('.showFull').click(function(e){
+                    $('.window').fadeIn(500);
+                    e.preventDefault();
+                });
+                $('.close').click(function (e) {
+                    $('.window').fadeOut(500);
+                    e.preventDefault();
+                }); 
+            }
+            layerPop()
+        </script>
+    </body>
+</html>

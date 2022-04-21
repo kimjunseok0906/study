@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style>
+        #computer {width:150px; height:243px; background:url(https://en.pimg.jp/023/182/267/1/23182267.jpg) 0 0}
+    </style>
+</head>
+<body>
+    <div id="computer"></div>
+    <button id="rock" class="btn">바위</button>
+    <button id="scissor" class="btn">가위</button>
+    <button id="paper" class="btn">보</button>
+    <script>
+        var 이미지좌표 = '0';
+        var 가위바위보 = {
+            바위: '0',
+            가위: '-142px',
+            보: '-284px'
+        };
+        
+        // 객체 value에서 key값 찾을때 하드코딩
+        // var 가위바위보2 = {
+        //     '0': '바위',
+        //     '-142px': '가위',
+        //     '-284px': '보'
+        // }
+
+        console.log(Object.entries(가위바위보))
+        
+        // 객체 value에서 key값 찾을때
+        function 컴퓨터의선택(이미지좌표){
+            return Object.entries(가위바위보).find(function(v){
+                return v[1] === 이미지좌표;
+            })[0]
+        }
+        
+
+        var 인터벌 = setInterval(function(){
+            if(이미지좌표 === 가위바위보.바위){
+                이미지좌표 = 가위바위보.가위
+            }else if(이미지좌표 === 가위바위보.가위){
+                이미지좌표 = 가위바위보.보
+            }else{
+                이미지좌표 = 가위바위보.바위;
+            }
+            document.querySelector('#computer').style.background = 'url(https://en.pimg.jp/023/182/267/1/23182267.jpg)' + 이미지좌표 + ' 0';
+        }, 100)
+        
+
+        // for 문
+        // for(var i = 0; i < document.querySelectorAll('.btn').length; i++){
+        //     document.querySelectorAll('.btn')[i].addEventListener('click', function(){
+        //         console.log(this.textContent)
+        //     })
+        // }
+        
+        // forEach 문
+        document.querySelectorAll('.btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+                clearInterval(인터벌) // 비동기인 setInterval 멈춤
+                setTimeout(function(){
+                    인터벌 = setInterval(function(){
+                        if(이미지좌표 === 가위바위보.바위){
+                            이미지좌표 = 가위바위보.가위
+                        }else if(이미지좌표 === 가위바위보.가위){
+                            이미지좌표 = 가위바위보.보
+                        }else{
+                            이미지좌표 = 가위바위보.바위;
+                        }
+                        document.querySelector('#computer').style.background = 'url(https://en.pimg.jp/023/182/267/1/23182267.jpg)' + 이미지좌표 + ' 0';
+                    }, 100)
+                }, 1000)
+                var 나의선택 = this.textContent;
+                if(나의선택 === '가위'){
+                    if(컴퓨터의선택(이미지좌표) === '가위'){
+                        console.log('비겼습니다.');
+                    }else if(컴퓨터의선택(이미지좌표) === '바위'){
+                        console.log('졌습니다ㅜㅜ');
+                    }else{
+                        console.log('이겼습니다!');
+                    }
+                }else if(나의선택 ==='바위'){
+                    if(컴퓨터의선택(이미지좌표) === '바위'){
+                        console.log('비겼습니다.');
+                    }else if(컴퓨터의선택(이미지좌표) === '보'){
+                        console.log('졌습니다ㅜㅜ');
+                    }else{
+                        console.log('이겼습니다!');
+                    }
+                }else if(나의선택 === '보'){
+                    if(컴퓨터의선택(이미지좌표) === '보'){
+                        console.log('비겼습니다.');
+                    }else if(컴퓨터의선택(이미지좌표) === '가위'){
+                        console.log('졌습니다ㅜㅜ');
+                    }else{
+                        console.log('이겼습니다!');
+                    }
+                }
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <header>
+
+        </header>
+        <main>
+        </main>
+        <footer>
+        </footer>
+        <script>
+            var array = ['사자','과자','배','고구마','영자','과일'];
+            var result = [];
+
+            array.forEach(function(item){
+                if(item.search(/^과/)){
+                    result.push(item)
+                };
+            });
+            console.log(result);
+
+            function baseball(){
+                var list = [0,1,2,3,4,5,6,7,8,9];
+                var number = [];
+                for (var i = 0; i < 4; i++){
+                    var select = Math.floor(Math.random() * list.length);
+                    //list.length 사용하는 이유는 변수에서 하나씩 빠지면서 작은수가 되기 떄문에 곱해도 큰숫자가 중복이 안됨!!
+                    number = number.concat(list.splice(select, 1));
+                    console.log('list', list, 'number', number, 'length', length);
+                }
+
+                var count = 0;
+                var strike = 0;
+                var ball = 0;
+                while (count < 10) {
+                // 숫자를 입력받고 비교를 준비하는 부분
+                    var input = prompt('숫자를 입력하세요'); // 숫자를 받는 부분
+                    var inputArray = input.split(''); // split함수는 아래에 설명
+                    strike = 0; // strike와 ball의 개수를 초기화
+                    ball = 0;
+                    count++; // 시도 횟수는 하나 증가
+                    // 입력받은 숫자를 비교분석하는 부분
+                    for (var j = 0; j < 4; j++) {
+                        for (var k = 0; k < 4; k++) {
+                            if (number[j] == inputArray[k]) {
+                                if (j === k) {
+                                    strike++;
+                                } else {
+                                    ball++;
+                                }
+                            }
+                        }
+                    }
+                    // 결과를 표시하는 부분 console객체는 밑에 설명
+                    if (strike === 4) {
+                        console.log('홈런!!! ' + (count - 1) + '번 만에 맞추셨습니다');
+                        } else if (count >= 10) {
+                            console.error('시도 횟수를 초과하셨습니다.');
+                        } else {
+                            console.info(inputArray.join('') + ': ' + strike + '스트라이크 ' + ball + '볼 ' + count + '번째 시도입니다.');
+                    }
+                }
+            }
+            baseball();
+        </script>
+    </body>
+</html>
