@@ -1,0 +1,102 @@
+<!DOCTYPE>
+<html lang="ko">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../css/base.css" rel="stylesheet">
+        <link href="../css/main.css" rel="stylesheet">
+        <script src="../js/jquery-1.12.3.min.js"></script>
+        <script>
+            // var countdown = function(goal) {
+            //     var now = new Date();
+            
+            //     var rest = goal.getTime() - now.getTime();
+            //     var sec = Math.floor(rest / 1000 % 60);
+            //     var min = Math.floor(rest / 1000 / 60) % 60;
+            //     var hours = Math.floor(rest / 1000 / 60 / 60) % 24;
+            //     var days = Math.floor(rest / 1000 / 60 / 60 / 24);
+            //     var count = [days, hours, min, sec];
+            
+            //     return count;
+            // }
+            
+            // var goal = new Date();
+            // goal.setHours(23);
+            // goal.setMinutes(59);
+            // goal.setSeconds(59);
+            
+            // var recalc = function() {
+            //     var counter = countdown(goal);
+            //     var time = counter[1] + '시간' + counter[2] + '분' + counter[3] + '초';
+            //     document.getElementById('timer').textContent = time;
+            //     refresh();
+            // }
+            
+            // var refresh = function() {
+            //     setTimeout(recalc, 1000);
+            // }
+            // recalc();
+            // Set the date we're counting down to
+
+            var countDownDate = new Date("Oct 5, 2018 09:31:30").getTime();
+
+            // Update the count down every 1 second
+            var x = setInterval(function() {
+
+                // Get todays date and time
+                var now = new Date().getTime();
+                
+                // Find the distance between now and the count down date
+                var distance = countDownDate - now;
+                
+                // Time calculations for days, hours, minutes and seconds
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                // Output the result in an element with id="demo"
+                document.getElementById("demo").innerHTML = days + "일 " + hours + "시간 "
+                + minutes + "분 " + seconds + "초";
+                
+                // If the count down is over, write some text 
+                if (distance < 0) {
+                    clearInterval(x);
+                    document.getElementById("demo").innerHTML = "이벤트 종료";
+                }
+            }, 1000);
+        </script>
+        <style>
+            #mask {position:fixed; background-color:#000; opacity:0.7; display:none; left:0; top:0;} 
+            #test {background-color: #86E57F; width: 300px; height: 300px; position: absolute; top:20%; left:40%; display: none; z-index:1}
+
+            #demo {font-weight:bold; font-size:26px;}
+        </style>
+    </head>
+    <body>
+        <p>지금부터<span id="timer"></span> 이후에 주문하면 50% 할인!</p>
+
+        <p id="demo"></p>
+
+        <div class="mu">
+            U<sup>+</sup>봇 이라고 해요<br> <span class="ab">U봇의 인사말 관리 기능을 abcd one two</span>
+        </div>
+        <style>
+            .mu {border:1px solid red; max-width:200px; max-height:48px; padding:0 10px; overflow: hidden; text-overflow: ellipsis; white-space: normal; font-family:'나눔고딕','Malgun Gothic','맑은 고딕',Dotum,'돋움',AppleSDGothicNeo,sans-serif; font-size:14px}
+        </style>
+
+        <script>
+            $('.ab').each(function(){
+                var length = 15;
+
+                $(this).each(function(){
+                    if($(this).text().length >= length){
+                        $(this).text($(this).text().substr(0, length) + '...')
+                    }
+                })
+                
+            })
+        </script>
+    </body>
+</html>

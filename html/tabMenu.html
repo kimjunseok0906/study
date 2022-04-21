@@ -1,0 +1,146 @@
+<!DOCTYPE>
+<html lang="ko">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../css/base.css" rel="stylesheet">
+        <link href="../css/main.css" rel="stylesheet">
+        <script src="../js/jquery-1.12.3.min.js"></script>
+        
+        <style>
+            .tabList {display:block}
+            .tabList:after {display:block; clear:both; content:""}
+            .tabList li {float:left; margin-right:10px}
+            .tabList li.on button {color:red}
+            .tabList li button {background:#fff; border:none; cursor:pointer}
+            .tabWrap {margin-top:50px; display:none}
+            .tabWrap.on {display:block}
+
+            select {width:100px}
+            .detail {display:none}
+            .detail.on {display:block}
+
+            .conList [class^='box'] {height:700px}
+            .conList select {position:fixed; top:0}
+        </style>
+    </head>
+    <body>
+        <div class="tabArea">
+            <ul class="tabList">
+                <li class="on"><button>탭1</button></li>
+                <li><button>탭2</button></li>
+                <li><button>탭3</button></li>
+                <li><button>탭4</button></li>
+                <li><button>탭5</button></li>
+            </ul>
+            <div class="tabWrap on">
+                <p>컨텐츠1</p>
+            </div>
+            <div class="tabWrap">
+                <p>컨텐츠2</p>
+            </div>
+            <div class="tabWrap">
+                <p>컨텐츠3</p>
+            </div>
+            <div class="tabWrap">
+                <p>컨텐츠4</p>
+            </div>
+            <div class="tabWrap">
+                <p>컨텐츠5</p>
+            </div>
+        </div>
+
+        <div class="formArea">
+            <div class="selectList">
+                <select name="" id="">
+                    <option class="sel01" value="sel1">컨텐츠1</option>
+                    <option class="sel02" value="sel2">컨텐츠2</option>
+                    <option class="sel03" value="sel3">컨텐츠3</option>
+                    <option class="sel04" value="sel4">컨텐츠4</option>
+                    <option class="sel05" value="sel5">컨텐츠5</option>
+                </select>
+                <div id="sel1" class="detail on">
+                    <p>컨텐츠1</p>
+                </div>
+                <div id="sel2" class="detail">
+                    <p>컨텐츠2</p>
+                </div>
+                <div id="sel3" class="detail">
+                    <p>컨텐츠3</p>
+                </div>
+                <div id="sel4" class="detail">
+                    <p>컨텐츠4</p>
+                </div>
+                <div id="sel5" class="detail">
+                    <p>컨텐츠5</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="conArea">
+            <div class="conList">
+                <select name="" id="">
+                    <option value="con1">컨텐츠1</option>
+                    <option value="con2">컨텐츠2</option>
+                    <option value="con3">컨텐츠3</option>
+                    <option value="con4">컨텐츠4</option>
+                    <option value="con5">컨텐츠5</option>
+                </select>
+                <div id="con1" class="box">
+                    <p>컨텐츠1</p>
+                </div>
+                <div id="con2" class="box">
+                    <p>컨텐츠2</p>
+                </div>
+                <div id="con3" class="box">
+                    <p>컨텐츠3</p>
+                </div>
+                <div id="con4" class="box">
+                    <p>컨텐츠4</p>
+                </div>
+                <div id="con5" class="box">
+                    <p>컨텐츠5</p>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(function(){
+                $('.selectList select').on('change', function(){
+                    var $select = $(this);
+                    var optionSelected = $(".selectList option:selected", this);
+                    var valueSelected = this.value;
+                    $select.parent('.selectList').find('.detail').removeClass('on');
+                    $select.parent('.selectList').find('#' + valueSelected).addClass('on');
+                 })
+             })
+
+            
+            $(function(){
+                $('.tabList li').on('click', function(){
+                    $(this).closest('.tabArea').find('.tabWrap').eq($(this).index()).addClass('on').siblings().removeClass('on');
+                    $(this).parent().find("li").removeClass("on");
+                    $(this).addClass("on");
+                })
+            })
+
+            $(function(){
+                $('.conList select').on('change', function(){
+                    var $select = $(this);
+                    var optionSelected = $(".conList option:selected", this);
+                    var valueSelected = this.value;
+                    var scMove = $select.parent('.conList').find('#' + valueSelected)
+                    $("body,html").animate({scrollTop: scMove.offset().top}, 500);
+                 })
+
+                $(window).scroll(function(){
+                    var scTop = $(window).scrollTop();
+                    console.log(scTop)
+                    if(scTop > 1000){
+                        $(".sel03").prop("selected", true);
+                    }
+                });
+             })
+        </script>
+    </body>
+</html>

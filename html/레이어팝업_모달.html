@@ -1,0 +1,126 @@
+<!DOCTYPE>
+<html lang="ko">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../css/base.css" rel="stylesheet">
+        <link href="../css/main.css" rel="stylesheet">
+        <script src="../js/jquery-1.12.3.min.js"></script>
+        <style>
+            body { margin:0; padding:0; }
+			#lay_mask{ position:absolute; background:black; z-index:100; opacity:0.5; background:rgba(0,0,0,.5)}
+            .PopupLayer { position: absolute; z-index: 110; }
+            #lay_mask {display:none}
+            #test_layer {width:500px;height:500px;background:red;display:none}
+            #test2_layer {width:400px;height:400px;background:green;display:none}
+            #test3_layer {width:300px;height:300px;background:blue;display:none}
+            #test4_layer {width:200px;height:200px;background:yellow;display:none}
+
+		</style>
+    </head>
+    <body>
+        <div id="lay_mask"></div>
+        <input type="button" onClick="toggleLayer($('#test_layer'), 'on');" value="첫번째 열기" />
+
+        <div id="test_layer">
+            <input type="button" value="닫기" onClick="toggleLayer($('#test_layer'), 'off');" />
+            <input type="button" value="두번째 열기" onClick="toggleLayer($('#test2_layer'), 'on');" />
+        </div>
+
+        <div id="test2_layer">
+            <input type="button" value="닫기" onClick="toggleLayer($('#test2_layer'), 'off');" />
+            <input type="button" value="세번째 열기" onClick="toggleLayer($('#test3_layer'), 'on');" />
+        </div>
+
+        <div id="test3_layer">
+            <input type="button" value="닫기" onClick="toggleLayer($('#test3_layer'), 'off');" />
+            <input type="button" value="네번째 열기" onClick="toggleLayer($('#test4_layer'), 'on');" />
+        </div>
+
+        <div id="test4_layer">
+            <input type="button" value="닫기" onClick="toggleLayer($('#test4_layer'), 'off');" />
+        </div>
+        <script type="text/javascript">
+            //레이어 가운데 띄우고 마스크 띄우기
+            function toggleLayer( obj, s ) {
+            
+                var zidx = $("#lay_mask").css("z-index");
+
+                if(s == "on") {
+                    //화면중앙에 위치시키기
+                    var left = ( $(window).scrollLeft() + ($(window).width() - obj.width()) / 2 );
+                    var top = ( $(window).scrollTop() + ($(window).height() - obj.height()) / 2 );
+
+                    // 높이가 0이하면 0으로 변경
+                    if(top<0) top = 0;
+                    if(left<0) left = 0;
+
+                    var layer_idx = Number(zidx) + 10;
+
+                    $("#lay_mask").css("z-index", layer_idx);
+
+                    obj.css({"left":left, "top":top, "z-index":layer_idx}).addClass("PopupLayer");
+                    $("body").append(obj);
+
+                    wrapWindowByMask();//배경 깔기
+                    obj.show();//레이어 띄우기
+                }
+
+                if(s == "off") {
+                    if($(".PopupLayer").length > 1) {
+                        var layer_idx = zidx - 10;
+                        $("#lay_mask").css("z-index", layer_idx);
+                    } else {
+                        $("#lay_mask").hide();
+                    }
+
+                    obj.removeClass("PopupLayer").hide();
+                }
+
+                if(s == "off2") { //레이어에서 다른 레이어를 띄울 경우 마스크는 안닫기 위한 처리
+                    obj.removeClass("PopupLayer").hide();
+                }
+            }
+
+            //마스크 띄우기
+            function wrapWindowByMask() { 
+
+                var mask = $("#lay_mask");
+
+                //화면의 높이와 너비를 구한다. 
+                var maskHeight = $(document).height();
+                var maskWidth = $(window).width();
+
+                //마스크의 높이와 너비를 화면 것으로 만들어 전체 화면을 채운다. 
+                mask.css({'width':maskWidth,'height':maskHeight});
+                mask.show();
+            }
+
+            // 사이즈 리사이징
+            function ResizingLayer() {
+
+                if($("#lay_mask").css("display") == "block") {
+                    //화면의 높이와 너비를 구한다. 
+                    var maskHeight = $(window).height();
+                    var maskWidth = $(document).width();
+
+                    //마스크의 높이와 너비를 화면 것으로 만들어 전체 화면을 채운다. 
+                    $("#lay_mask").css({'width':maskWidth,'height':maskHeight});  
+
+                    $(".PopupLayer").each(function () {
+                        var left = ( $(window).scrollLeft() + ($(window).width() - $(this).width()) / 2 );
+                        var top = ( $(window).scrollTop() + ($(window).height() - $(this).height()) / 2 );
+
+                        if(top<0) top = 0;
+                        if(left<0) left = 0;
+
+                        $(this).css({"left":left, "top":top});
+                    });
+                }
+           }
+
+           window.onresize = ResizingLayer;
+        </script>
+    </body>
+</html>

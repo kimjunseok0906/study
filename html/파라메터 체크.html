@@ -1,0 +1,44 @@
+<!DOCTYPE>
+<html lang="ko">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../css/base.css" rel="stylesheet">
+        <link href="../css/main.css" rel="stylesheet">
+        <script src="../js/jquery-1.12.3.min.js"></script>
+        <style>
+			
+		</style>
+    </head>
+    <body>
+        
+    </body>
+    <script type="text/javascript">
+        //파라메터 체크
+        $(document).ready(function(){
+            function urlParam(name){
+                var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+                if (results==null){
+                return null;
+                }
+                else{
+                return results[1] || 0;
+                }
+            }
+            
+            var paramsId = urlParam('cnid');
+            
+            if(paramsId != null){
+                if(paramsId == 'inter'){ //인터넷
+                    $('.paraTab li').find('a[data-name="inter"]').trigger('click');
+                }else if(paramsId == 'card'){ //제휴카드
+                    $('.paraTab li').find('a[data-name="card"]').trigger('click');
+                }else if(paramsId == 'sale'){ //유무선결합
+                    $('.paraTab li').find('a[data-name="sale"]').trigger('click');
+                }
+            }
+        })
+            
+    </script>
+</html>

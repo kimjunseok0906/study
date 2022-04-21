@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../css/main.css" rel="stylesheet">
+        <script src="../js/jquery-1.12.3.min.js"></script>
+        <script src="../js/main.js"></script>
+    </head>
+    <body>
+        <section class="form">
+            <h1>form 관련요소</h1>
+            <article class="formRadio">
+                <h2>라디오</h2>
+                <div class="rNormal">
+                    <h3>라디오 기본</h3>
+                    <input type="radio" id="radio01" name="rSel01">
+                    <label for="radio01">선택1</label>
+                    <input type="radio" id="radio02" name="rSel01">
+                    <label for="radio02">선택2</label>
+                </div>
+                <div class="rImage">
+                    <h3>라디오 이미지</h3>
+                    <input type="radio" id="radio03" name="rSel02">
+                    <label for="radio03" class="on">선택1</label>
+                    <input type="radio" id="radio04" name="rSel02">
+                    <label for="radio04">선택2</label>
+                </div>
+            </article>
+            <article class="formCheck">
+                <h2>체크박스</h2>
+                <div class="cNormal">
+                        <h3>체크박스 기본</h3>
+                        <input type="checkbox" id="check01">
+                        <label for="check01">선택1</label>
+                        <input type="checkbox" id="check02">
+                        <label for="check02">선택2</label>
+                    </div>
+                    <div class="cImage">
+                        <h3>체크박스 이미지</h3>
+                        <input type="checkbox" id="check03" checked>
+                        <label for="check03" class="on">선택1</label>
+                        <input type="checkbox" id="check04">
+                        <label for="check04">선택2</label>
+                        <input type="checkbox" id="check05" disabled>
+                        <label for="check05">비활성</label>
+                    </div>
+            </article>
+            <article class="formCheck">
+                <h2>셀렉트박스</h2>
+                <div class="selType01">
+                    <a href="#layerCompare_" class="btn" title="바로가기 열림">바로가기</a>
+                    <ul class="list">
+                        <li><a href="#">회사소개</a></li>
+                        <li><a href="#">LG계열사</a></li>
+                        <li><a href="#">연체정보조회</a></li>
+                        <li><a href="#">명의도용방지서비스</a></li>
+                        <li><a href="#">휴대폰 대출사기주의</a></li>
+                        <li><a href="#">구매협업</a></li>
+                        <li><a href="#">협력회사상생고</a></li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="formCheck ta">
+                <label for="ab01" class="textVal">내용</label>
+                <textarea name="" id="ab01" class="area" data-role="textLableIn"></textarea>
+            </article>
+        </section>
+        <script>
+            $(window).load(function() {
+                var selOn = $('.panels').find().attr('style','display:block');
+                var selIndex = $('tc-panel').index(selOn)
+            });
+
+			$(function(){
+				var btnOpenComp = $('a[href="#layerCompare_"]');
+				btnOpenComp.click(function(e){
+					e.preventDefault();
+				
+					if( btnOpenComp.hasClass("active") ){
+						$(this).attr("title","바로가기 열림");
+						$(this).removeClass("active");
+						
+					}else{
+						$(this).attr("title","바로가기 닫힘");
+						$(this).addClass("active");
+					}
+					
+				});
+			});
+
+            $(function(){
+                $('.area').on({
+                    focusin : function(){
+                        var thisLabel = $(this).siblings('label');
+                        thisLabel.hide();
+                    },
+                    focusout : function(){
+                        var thisLabel = $(this).siblings('label');
+                        if( $(this).val() == ''){
+                            thisLabel.show();
+                        } else {
+                            thisLabel.hide();
+                        }
+                    }
+
+                });
+            })
+        </script>
+    </body>
+</html>

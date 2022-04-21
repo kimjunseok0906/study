@@ -1,0 +1,99 @@
+<!DOCTYPE>
+<html lang="ko">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../css/base.css" rel="stylesheet">
+        <link href="../css/main.css" rel="stylesheet">
+        <script src="../js/jquery-1.12.3.min.js"></script>
+        <style>
+			.setDiv {
+				padding-top: 100px;
+				text-align: center;
+			}
+            table td {border:1px solid #000; width:50px;height:50px}
+            .stop {display:none; position:fixed; top:50%; left:50%; margin-top:-100px; margin-left:-100px; width:200px; height:200px; border:1px solid #000}
+		</style>
+        <script>
+            function cancel(){
+                window.open('','_self').close();
+            }
+        </script>
+    </head>
+    <body>
+        <div class="setDiv">
+            <div class="window">
+                <!-- <a href="http://www.naver.com" onclick="newWindow(this.href,'bossProductPopup','400','400','yes'); return false">팝업</a> -->
+                <a href="./scroll.html" target="_blank" title="새창열림">가나다</a>
+            </div>
+            <a href="#" onclick="cancel()">닫기</a>
+        </div>
+        <table>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        <div class="stop">
+            다른 서비스도 알아보세요<br>
+            <a href="http://www.uplus.co.kr">홈페이지</a>
+        </div>
+    </body>
+    <script type="text/javascript">
+        var win = null;
+        function newWindow(mypage, myname, w, h, scroll) {
+            var winl = (screen.width - w) / 2;
+            var wint = (screen.height - h) / 2;
+            var settings = 'height=' + h + ',';
+            settings += 'width=' + w + ',';
+            settings += 'top=' + wint + ',';
+            settings += 'left=' + winl + ',';
+            settings += 'scrollbars=' + scroll + ',';
+            settings += 'resizable=yes';
+            win = window.open(mypage, myname, settings)
+        }
+        
+        $('table td').each(function(index,item){ //반복문 조건자 선택 및 인자값 이름 선언
+            $(item).text(index); //인자값 활용
+        });
+
+        // var loop = setInterval(function() {   
+        //     if(win.closed) {  
+        //         clearInterval(loop);  
+        //         $('.stop').show();
+        //     }  
+        // }, 500);
+    </script>
+</html>

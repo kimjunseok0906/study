@@ -1,0 +1,144 @@
+<!DOCTYPE>
+<html lang="ko">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../css/base.css" rel="stylesheet">
+        <link href="../css/main.css" rel="stylesheet">
+        <script src="../js/jquery-1.12.3.min.js"></script>
+        <script>
+
+            $(function(){
+                var textList = $('.txtList ul')
+                $('.select_text').on('click', function() {
+                    if(textList.hasClass('select_on')){
+                        textList.stop().slideUp();
+                        textList.removeClass('select_on');
+                    }else{
+                        textList.stop().slideDown();
+                        textList.addClass('select_on');
+                    }
+                });
+
+                $('.txtList ul li').on("click", function() {
+                    var selectText = $(this).text();
+                    $('.select_text').text(selectText);					
+                    textList.stop().slideUp();	
+                    textList.removeClass('select_on');
+                });
+
+                var contPos_arr = [];
+                function setContPos() {
+                    var list = $('.txtList li');
+
+                    list.each(function(i) {
+                        var cont = $('.con0' + (i + 1));
+                        var contTop = cont.offset().top;
+                        contPos_arr[i] = contTop;
+                    });
+                }
+                
+                function wScroll() {
+                    var list = $('.txtList li');
+                    var st = $(this).scrollTop();
+                    var title = $(".txtList .select_text");
+                    var textDiv = $(".txtList .select_text").outerHeight();
+                    var winHeight = $(window).scrollTop();
+                    var featureTitle = $('.txtList');
+                    var featureTitleHeight = $('.txtList').outerHeight();
+                    var con11 = $('.txtList').offset().top;
+                    list.each(function(i) {
+                        if (st >= contPos_arr[i] - (textDiv*3)) {
+                            title.text($(this).text());
+                        }
+                    });
+                    $(window).on('scroll', function(){
+                        list.each(function(i) {
+                            if (st >= contPos_arr[i] - (textDiv*3)) {
+                                title.text($(this).text());
+                            }
+                        });
+                        if(con11 <= st){
+                            
+                        }
+                        
+                    })
+                }
+
+                $(window).resize(function() {
+                    setContPos();
+                }).resize();
+
+                $(window).on("scroll", wScroll);
+
+                $(".txtList li").each(function() {
+                    $(this).on("click", function() {
+                        $(window).off();
+                        var idx = $(this).index() + 1;
+                        var cont = $(".con0" + idx);
+                        var fixedListHeight = $(".txtList .select_text").outerHeight();
+                        var top = cont.offset().top - fixedListHeight * 2;
+                        var speed = 1000;
+                        
+                        
+                        $("html, body").stop().animate({"scrollTop": top}, speed, function() {
+                            $(window).on("scroll", wScroll);
+
+                            return false;
+                        });
+                        $('.feature-index').animate({'top':0});
+                    });
+                });
+            })
+
+			if(html.hasClass('on')){
+
+            }
+
+            if('html.hasClass('on')'){
+                
+            }
+            
+        </script>
+        <style>
+            .sele {margin-top:200px}
+            .txtList {position:fixed; top:0;}
+            .txtList ul {display:none; border-top:1px solid #000; border-bottom:1px solid #000}
+            .txtList ul.select_on {display:block}
+            .con {height:1000px}
+            .con01 {margin-top:100px}
+        </style>
+    </head>
+    <body>
+        <div class="sele">
+            <div class="responsive">
+                <div class="txtList">
+                    <div class="select_text">5G 동영상</div>
+                    <div>
+                        <ul>
+                            <li class="list01">5G 동영상</li>
+                            <li class="list02">5G 뉴스</li>
+                            <li class="list03">5G 요금제</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="con con01">
+                    5G 동영상
+            </div>
+            <div class="con con02">
+                    5G 뉴스
+            </div>
+            <div class="con con03">
+                    5G 요금제
+            </div>
+        </div>
+        <script>
+        $(document).ready(function(){
+            var $height = $(window).height();
+            console.log($height)
+        })
+        </script>
+    </body>
+</html>

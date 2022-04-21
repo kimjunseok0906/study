@@ -1,0 +1,48 @@
+<!DOCTYPE>
+<html lang="ko">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../css/base.css" rel="stylesheet">
+        <link href="../css/main.css" rel="stylesheet">
+        <script src="../js/jquery-1.12.3.min.js"></script>
+        <style>
+            .layer {display:none; border:1px solid red; position:fixed; top:50%; left:50%}
+		</style>
+    </head>
+    <body>
+        <div class="layer">
+			<div>
+				팝업1
+				<input type="button" href="#" class="close" value="닫기">
+			</div>
+		</div>
+        <script>
+            
+			$(function(){				
+				var cliEve = true
+
+				function layerPop(){
+					$('.layer').show();
+				}
+
+				myTimer = setInterval(layerPop, 5000);
+
+
+				// 이벤트 이미지 영역
+				$('body').click(function(){
+					if(cliEve){
+						clearInterval(myTimer)
+						myTimer = setInterval(layerPop, 5000);
+					}
+				})
+
+                $('.close').click(function(){
+                    $('.layer').hide();
+                })
+            })
+        </script>
+    </body>
+    
+</html>

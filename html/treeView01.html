@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .tree {color:#393939}
+        .tree,
+        .tree ul {list-style:none; padding-left:17px}
+        .tree *:before {width:17px; height:17px; display:inline-block}
+        .tree label {cursor:pointer}
+        .tree a {text-decoration:none; color:#393939}
+        .tree input[type='checkbox'] {display:none}
+        .tree input[type='checkbox']:checked~ul {display:none}
+    </style>
+</head>
+<body>
+    <h1>TREE 1</h1>
+    <ul class="tree">
+        <li>
+            <input type="checkbox" id="root">
+            <label for="root">Root</label>
+            <ul>
+                <li><a href="https://opentutorials.org">node1</a></li>
+                <li><a href="https://opentutorials.org">node2</a></li>
+                <li>
+                    <input type="checkbox" id="node3">
+                    <label for="node3">node3</label>
+                    <ul>
+                        <li><a href="https://opentutorials.org">node1</a></li>
+                        <li><a href="https://opentutorials.org">node1</a></li>
+                        <li><a href="https://opentutorials.org">node1</a></li>
+                        <li>
+                            <input type="checkbox" id="node4">
+                            <label for="node4">node3</label>
+                            <ul>
+                                <li><a href="https://opentutorials.org">node1</a></li>
+                                <li><a href="https://opentutorials.org">node1</a></li>
+                                <li><a href="https://opentutorials.org">node1</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+</body>
+</html>

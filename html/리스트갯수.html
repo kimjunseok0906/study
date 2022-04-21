@@ -1,0 +1,59 @@
+<!DOCTYPE>
+<html lang="ko">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../css/base.css" rel="stylesheet">
+        <link href="../css/main.css" rel="stylesheet">
+        <script src="../js/jquery-1.12.3.min.js"></script>
+        <style>
+			ul:after {display:block; clear:both; content:""}
+            li {height:50px; float:left; background:#000; border:1px solid #fff; margin-left:10px}
+            .type2 li {width:49%}
+            .type3 li {width:32%}
+            .type4 li {width:24%}
+            .type5 .list1 {width:49%}
+            .type5 .list2 {width:49%}
+            .type5 .list3 {width:32%}
+            .type5 .list4 {width:32%}
+            .type5 .list5 {width:32%}
+            .type6 li {width:32%}
+            .type7 .list1 {width:32%}
+            .type7 .list2 {width:32%}
+            .type7 .list3 {width:32%}
+            .type7 .list4 {width:24%}
+            .type7 .list5 {width:24%}
+            .type7 .list6 {width:24%}
+            .type7 .list7 {width:24%}
+            .type8 li {width:24%}
+		</style>
+    </head>
+    <body>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </body>
+    <script type="text/javascript">
+        $(function(){
+            function list(){
+                var listWrap =  $('ul');
+                var list =  $('ul li');
+                var listLen =  $('ul li').length;
+                listWrap.addClass('type' + listLen);
+                list.each(function(i){
+                    var $index = i + 1;
+                    $(this).addClass('list' + $index);
+                })
+            }
+            list()
+        })
+    </script>
+</html>

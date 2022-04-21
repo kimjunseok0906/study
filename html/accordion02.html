@@ -1,0 +1,60 @@
+<!DOCTYPE>
+<html lang="ko">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../css/base.css" rel="stylesheet">
+        <link href="../css/main.css" rel="stylesheet">
+        <script src="../js/jquery-1.12.3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <script>
+            $(function(){
+                $('.section .cont').on('mouseover', function(){
+                    $(this).siblings().stop().animate({width:"170px"}, 400, 'swing').removeClass('on');
+                    $(this).stop().animate({width:"420px"}, 400, 'swing').addClass('on');
+                });
+            });
+            // $(function() {
+
+            //     $(".section .cont").mouseover(function() {					
+            //         $(".section .cont").stop().animate({width:"153px"}, 900, 'easeOutCirc').removeClass("on");
+            //         $(this).stop().animate({width:"413px"}, 900, 'easeOutCirc').addClass("on");	
+            //     });
+
+            // });
+        </script>
+        <style>
+            .section {width:1200px; margin:50px auto; overflow:hidden;}
+            .section .cont {width:170px; height:417px; overflow:hidden; float:left;border-left:1px solid #fff}
+            .section .cont.on {width:420px}
+            .section .cont .over {display:none}
+            .section .cont.on .nor {display:none}
+            .section .cont.on .over {display:block}
+        </style>
+    </head>
+    <body>				
+        <div class="section">
+            <div class="cont on">					
+                <span class="bg nor"><img src="../images/test2.jpg" /></span>
+                <span class="bg over"><img src="../images/test1.jpg" /></span>
+            </div>
+            <div class="cont">					
+                <span class="bg nor"><img src="../images/test2.jpg" /></span>
+                <span class="bg over"><img src="../images/test1.jpg" /></span>
+            </div>
+            <div class="cont">					
+                <span class="bg nor"><img src="../images/test2.jpg" /></span>
+                <span class="bg over"><img src="../images/test1.jpg" /></span>
+            </div>
+            <div class="cont">					
+                <span class="bg nor"><img src="../images/test2.jpg" /></span>
+                <span class="bg over"><img src="../images/test1.jpg" /></span>
+            </div>
+            <div class="cont">					
+                <span class="bg nor"><img src="../images/test2.jpg" /></span>
+                <span class="bg over"><img src="../images/test1.jpg" /></span>
+            </div>
+        </div>
+    </body>
+</html>

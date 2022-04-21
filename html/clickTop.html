@@ -1,0 +1,66 @@
+<!DOCTYPE>
+<html lang="ko">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../css/base.css" rel="stylesheet">
+        <link href="../css/main.css" rel="stylesheet">
+        <script src="../js/jquery-1.12.3.min.js"></script>
+        <style>
+            body {width:1100px; margin:0 auto}
+            div.a {height:500px; background:red}
+            div.b {height:500px; background:blue}
+            div.c {height:500px; background:blueviolet}
+            div.d {height:500px; background:gold}
+            div.e {height:500px; background:green}
+            .btnTop {display:none; position:fixed; right:0px; bottom:40px; border-radius:10px; background:#000; color:#fff; text-align:center; width:40px; height:40px; line-height:40px; text-align:center}
+            .btnTop.on {display:block}
+        </style>
+    </head>
+    <body>
+        <div id="wrap" class="container">
+            <div class="a"></div>
+            <div class="b"></div>
+            <div class="c"></div>
+            <div class="d"></div>
+            <div class="e"></div>
+            <a href="#wrap" class="btnTop">Top</a>
+        </div>
+    </body>
+    <script>
+        function utilTopBtn() {
+            var $btnTop = $('.btnTop');
+            $btnTop.each(function(){
+                $(this).click(function(e){
+                    $('html, body').delay(300).animate({scrollTop : 0},350);
+                    e.preventDefault()
+                });
+                posBtn(this)
+            });
+    
+            function posBtn(obj) {
+                if($('.container').size() > 0) {
+                        var chkLeft = $('.container').offset().left + $('.container').width() + 20;
+                    $(obj).css('left', chkLeft);
+                }
+            }
+    
+            $(window).resize(function(){
+                posBtn($btnTop)
+            })
+
+            $(function(){
+                $(window).scroll(function(){
+                    var st = $(this).scrollTop();
+                    if(st > 500){
+                        $('.btnTop').addClass('on');
+                    }else{
+                        $('.btnTop').removeClass('on');
+                    };
+                });    
+            });
+        }
+        utilTopBtn()
+    </script>
+</html>

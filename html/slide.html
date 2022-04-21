@@ -1,0 +1,107 @@
+<!DOCTYPE>
+<html lang="ko">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../css/base.css" rel="stylesheet">
+        <link href="../css/main.css" rel="stylesheet">
+        <script src="../js/jquery-1.12.3.min.js"></script>
+        
+        <style>
+            .wrap {width:1100px; margin:0 auto}
+            .majorBusinessSlide {position:relative; overflow:hidden; height:100px; margin-top:100px; padding:0 40px}
+            .slideList {position:relative; width:100%; height:100px; overflow-x:hidden}
+            .slideList ul {position:absolute; top:0px; left:0; width:300%; height:100px}
+            .slideList ul:after {display:block; clear:both; content:""}
+            .slideList li {float:left; width:127px; height:100px; text-align:center; border-left:1px solid #5d5d5d}
+            .slideList li a {vertical-align:middle; display:inline-block; width:100%; height:100%}
+            .leftBtn {position:absolute; left:0; top:0}
+            .rightBtn {position:absolute; right:0; top:0}
+            .slideBtn {background:#fff; color:#000; border:1px solid #000; cursor:pointer; width:40px; height:100px}
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+            <div class="majorBusinessArea">
+                <div class="majorBusinessSlide">
+                    <div id="slideList" class="slideList">
+                        <ul>
+                            <li class="active"><a href="#"><div class="icon"><span class="sprite sprite_common icon_business_01"></span></div><em>전체</em></a></li>
+                            <li><a href="#"><div class="icon"><span class="sprite sprite_common icon_business_09"></span></div><em>소호맞춤상품</em></a></li>
+                            <li><a href="#"><div class="icon"><span class="sprite sprite_common icon_business_02"></span></div><em>기업전화</em></a></li>
+                            <li><a href="#"><div class="icon"><span class="sprite sprite_common icon_business_03"></span></div><em>데이터</em></a></li>
+                            <li><a href="#"><div class="icon"><span class="sprite sprite_common icon_business_04"></span></div><em>결제/자금관리</em></a></li>
+                            <li><a href="#"><div class="icon"><span class="sprite sprite_common icon_business_05"></span></div><em>기업IT</em></a></li>
+                            <li><a href="#"><div class="icon"><span class="sprite sprite_common icon_business_06"></span></div><em>마케팅/고객관리</em></a></li>
+                            <li><a href="#"><div class="icon"><span class="sprite sprite_common icon_business_07"></span></div><em>시설/보안</em></a></li>
+                            <li><a href="#"><div class="icon"><span class="sprite sprite_common icon_business_08"></span></div><em>IOT</em></a></li>
+                            <li><a href="#"><div class="icon"><span class="sprite sprite_common icon_business_10"></span></div><em>U+BizShop</em></a></li>
+                            <li class="last"><a href="#"><div class="icon"><span class="sprite sprite_common icon_business_11"></span></div><em>터칭</em></a></li>
+                            <li class="active"><a href="#"><div class="icon"><span class="sprite sprite_common icon_business_01"></span></div><em>전체</em></a></li>
+                            <li><a href="#"><div class="icon"><span class="sprite sprite_common icon_business_09"></span></div><em>소호맞춤상품</em></a></li>
+                            <li><a href="#"><div class="icon"><span class="sprite sprite_common icon_business_02"></span></div><em>기업전화</em></a></li>
+                            <li><a href="#"><div class="icon"><span class="sprite sprite_common icon_business_03"></span></div><em>데이터</em></a></li>
+                            <li><a href="#"><div class="icon"><span class="sprite sprite_common icon_business_04"></span></div><em>결제/자금관리</em></a></li>
+                            <li><a href="#"><div class="icon"><span class="sprite sprite_common icon_business_05"></span></div><em>기업IT</em></a></li>
+                            <li><a href="#"><div class="icon"><span class="sprite sprite_common icon_business_06"></span></div><em>마케팅/고객관리</em></a></li>
+                            <li><a href="#"><div class="icon"><span class="sprite sprite_common icon_business_07"></span></div><em>시설/보안</em></a></li>
+                            <li><a href="#"><div class="icon"><span class="sprite sprite_common icon_business_08"></span></div><em>IOT</em></a></li>
+                            <li><a href="#"><div class="icon"><span class="sprite sprite_common icon_business_10"></span></div><em>U+BizShop</em></a></li>
+                            <li class="last"><a href="#"><div class="icon"><span class="sprite sprite_common icon_business_11"></span></div><em>터칭</em></a></li>
+                        </ul>
+                    </div>
+                    <a href="#" class="slideBtn leftBtn"><span>이전</span></a>
+                    <a href="#" class="slideBtn rightBtn"><span>다음</span></a>
+                </div>
+            </div>
+        </div>
+        <script>
+            function mbSlideBtn(){
+                var mbSlideWrap = $('.majorBusinessSlide');
+                var mbSlideWrapWidth = mbSlideWrap.width();
+                var mbSlideUl = $('ul');
+                var mbSlideLi = $('li');
+                var mbSlideLength = mbSlideLi.length;
+                var mbMax = Math.ceil(mbSlideLength / 10); //1가되면 동작안됨
+                var clickCount = 0;
+                if (mbSlideLength < 8) {
+                    $('.slideBtn').addClass('deactive');
+                }
+            
+                $('.slideBtn').on('click', function(e){
+                    var slideBtnIdx = $(this).index(); //(1,2)
+            
+                    var slideWrapper = $(this).closest('.majorBusinessSlide'),
+                        slideElem = slideWrapper.find('li'),
+                        slideWidth = slideElem.width(), //11
+                        movSlide = slideWidth * 8; //1008
+            
+                    if (mbSlideLength < 9) {
+                        return false;
+                    } else {
+                        switch (slideBtnIdx){ //참조값(1,2)
+                            case 1: //참조값이 1일때
+                                if (clickCount <= 0) {
+                                    clickCount  = mbMax; //1을 유지시킴
+                                }
+                                clickCount--;
+                                mbSlideUl.animate({left: -movSlide*clickCount});
+                                break;
+            
+                            case 2: 
+                                clickCount++;
+                                if (clickCount >= mbMax) {
+                                    clickCount  = 0;
+                                }
+                                mbSlideUl.animate({left: -movSlide*clickCount});
+                                break;
+                        };
+                    };
+                });
+            };
+            mbSlideBtn()
+        </script>
+    </body>
+    
+</html>

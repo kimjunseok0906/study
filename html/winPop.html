@@ -1,0 +1,37 @@
+<!DOCTYPE>
+<html lang="ko">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../css/base.css" rel="stylesheet">
+        <link href="../css/main.css" rel="stylesheet">
+        <script src="../js/jquery-1.12.3.min.js"></script>
+        <script>
+            var win = null;
+		function newWindow(mypage, myname, w, h, scroll) {
+		    var winl = (screen.width - w) / 2;
+		    var wint = (screen.height - h) / 2;
+		    var settings = 'height=' + h + ',';
+		    settings += 'width=' + w + ',';
+		    settings += 'top=' + wint + ',';
+		    settings += 'left=' + winl + ',';
+		    settings += 'scrollbars=' + scroll + ',';
+		    settings += 'resizable=yes';
+		    win = window.open(mypage, myname, settings);
+		    if (parseInt(navigator.appVersion) >= 4) { win.window.focus(); }
+		}
+        </script>
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <div id="pop_wrap" class="pop_wrap01">
+            <span class="empty"></span>
+            <div class="pop_wrap_inner">
+                <a onclick="newWindow(this.href,'','1020','700','yes');return false" href="http://www.naver.com"  target="_blank" title="새창열림">팝업열기<i></i></a>
+            </div>
+        </div>
+    </body>
+</html>

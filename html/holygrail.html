@@ -1,0 +1,67 @@
+<!DOCTYPE>
+<html lang="ko">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../css/base.css" rel="stylesheet">
+        <script src="../js/jquery-1.12.3.min.js"></script>
+        <script>
+            function print_page(){
+                window.print()
+            }
+        </script>
+        <style>
+            body {width:1100px; margin:0 auto}
+            * {box-sizing:border-box}
+            .container {height:2000px; border:5px solid #000}
+            .container header,
+            .container footer {border:5px solid red}
+            .content > * {float:left; border:5px solid green; padding-bottom:500px; margin-bottom:-500px}
+            .content {padding:0 150px 0 200px; overflow:hidden}
+            .content main {width:100%}
+            .content nav {position:relative; left:-200px; margin-left:-100%; width:200px}
+            .content aside {width:150px; margin-right:-150px}
+            .container footer {clear:both}
+            .btn {display: block; width:50px; height:50px; background: #000;}
+            
+            @media (max-width:599px){
+            .content > * {float:none; border:5px solid green; padding-bottom:0; margin-bottom:0}
+            .content {padding:0; overflow:visible}
+            .content main {width:100%}
+            .content nav {left:0px; margin-left:0; width:auto}
+            .content aside {width:auto; margin-right:0px}
+            }
+            @media print{
+                html, body {width:100%}
+            }
+        </style>
+    </head>
+    <body>
+        <h1>구버전 holygrail(성배)</h1>
+        <a href="#" onclick="print_page(); return false;" class="btn"></a>
+        <div class="container">
+            <header>
+                <h1>HEADER</h1>
+            </header>
+            <section class="content">
+                <main>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem facere itaque nisi ipsum voluptate alias, ea vitae nemo, voluptas facilis sunt tenetur harum quos cumque unde aut obcaecati atque modi nobis. Maxime molestias, veritatis alias sapiente quo fugiat provident. Provident totam asperiores laboriosam dignissimos, cupiditate, voluptatum dolore nam repellat architecto minus consequuntur. Officiis magni reprehenderi!
+                </main>
+                <nav>
+                <ul>
+                    <li>item</li>
+                    <li>item</li>
+                    <li>item</li>
+                </ul>
+                </nav>
+                <aside>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, possimus 
+                </aside>
+            </section>
+            <footer>
+                FOOTER
+            </footer>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../css/base.css" rel="stylesheet">
+        <link href="../css/main.css" rel="stylesheet">
+        <script src="../js/jquery-1.12.3.min.js"></script>
+        <script>
+            $(function(){
+                $(".accordion a").on("click", function(){
+                    var item = $(this).parent();
+                    if($(item).hasClass("on")){
+                        $(item).removeClass("on");
+                    }else{
+                        $(".accordion li").removeClass("on")
+                        $(item).addClass("on");
+                    };
+                });
+
+                $('.allOpen').on('click', function(){
+                    $(this).parent().parent('.accordion').find('ul > li .box').addClass('on').slideDown(500)
+                });
+                $('.allClose').on('click', function(){
+                    $(this).parent().parent('.accordion').find('ul > li .box').removeClass('on').slideUp(500)
+                })
+            });
+        </script>
+        <style>
+            .accordion {width:500px; margin:30px auto; text-align:center;}
+            .accordion a {display:inline-block; width:100%; line-height:30px; color:#fff;}
+            .accordion .orange {background:orange;}
+            .accordion .gray {background:#666;}
+            .accordion .box {display:none; height:200px; padding:10px; border:1px solid #e0e0e0;}
+            .btnArea {text-align:center}
+        </style>
+    </head>
+    <body>
+        <div class="accordion">
+            <div class="btnArea">
+                <button type="button" class="allOpen">전체펼침</button>
+                <button type="button" class="allClose">전체닫힘</button>
+            </div>
+            <ul>
+                <li class="on">
+                    <a href="#" class="orange">title01</a>
+                    <div class="box">content01</div>
+                </li>
+                <li>
+                    <a href="#" class="gray">title02</a>
+                    <div class="box">content02</div>
+                </li>
+                <li>
+                    <a href="#" class="orange">title03</a>
+                    <div class="box">content03</div>
+                </li>
+                <li>
+                    <a href="#" class="gray">title04</a>
+                    <div class="box">content04</div>
+                </li>
+            </ul>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE>
+<html lang="ko">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../css/base.css" rel="stylesheet">
+        <link href="../css/main.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+        <style>
+            .wrap {width:1000px}
+			.wrap:after {display:block; content:""; clear:both;}
+            .wrap > div {float:left; width:400px; margin-right:10px; border:1px solid #000;}
+            .listwrap:after {display:block; content:""; clear:both}
+            .listwrap li {float:left; width:24%; height:50px; background:#000; color:#fff}
+            .right {height:500px}
+            .inner {width:100%; height:224px; border:1px solid red}
+		</style>
+    </head>
+    <body>
+        <div class="wrap">
+            <div class="left">
+                <ul class="listWrap">
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                </ul>
+                <div class="inner" style="display:none">
+
+                </div>
+                <div class="inner" style="display:none">
+                    
+                </div>
+                <div class="inner" style="display:block">
+                    
+                </div>
+                <div class="inner" style="display:block">
+                    
+                </div>
+            </div>
+            <div class="right">
+
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript">
+        $(function(){
+            var list = $('.listWrap li').length;
+            var len = $('.inner:visible').length;
+            console.log(len)
+            if(list >= 5){
+                if (len < 2){
+                    $('.inner').css('height','398px')
+                }else{
+                    $('.inner').css('height','200px')
+                }
+                console.log('리스트 두줄');
+            }else{
+                if (len < 2){
+                    $('.inner').css('height','450px')
+                }else{
+                    $('.inner').css('height','224px')
+                }
+                console.log('리스트 한줄');
+            }
+        })
+    </script>
+</html>

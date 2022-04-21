@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../css/base.css" rel="stylesheet">
+        <link href="../css/main.css" rel="stylesheet">
+        <script src="../js/jquery-1.12.3.min.js"></script>
+        <script>
+            $(function(){
+                $('button').on('click', function(){
+                    var val = $('.clone').select();
+                    document.execCommand('copy');
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <div>
+            <input type="text" class="clone" value="123123123">
+            <button type="button">복사</button>
+            <input type="text">
+        </div>
+    </body>
+</html>

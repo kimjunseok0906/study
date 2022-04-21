@@ -1,0 +1,45 @@
+<!DOCTYPE>
+<html lang="ko">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <style>
+            body {display:flex; align-items:center; justify-content:center}
+            .container {display:flex; flex-direction:column; width:500px; border:1px solid gray}
+            header {padding-left:20px; border-bottom:1px solid gray}
+            footer {padding:20px; text-align:center; border-top:1px solid #808080}
+            .content {display:flex}
+            .content nav {border-right:1px solid gray}
+            .content aside {border-left:1px solid gray}
+            nav, aside {flex-basis:150px; flex-shrink:0}
+            nav {order:-1}
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h1>생활코딩</h1>
+            </header>
+            <section class="content">   
+                <main>
+                        생활코딩생활코딩생활코딩생
+                </main>
+                <nav>
+                    <ul>
+                        <li>html</li>
+                        <li>css</li>
+                        <li>java</li>
+                    </ul>
+                </nav>
+                <aside>
+                    AD
+                </aside>
+            </section>
+            <footer>
+                <a href="" id="">홈페이지</a>
+            </footer>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE>
+<html lang="ko">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../css/base.css" rel="stylesheet">
+        <link href="../css/main.css" rel="stylesheet">
+        <script src="../js/jquery-1.12.3.min.js"></script>
+        <style>
+            body {height:2000px}
+            .showMask {display:block; margin-top:200px}
+			.setDiv {padding-top:100px;text-align:center}
+            .mask {position:absolute;left:0;top:0;z-index:9999;background-color:#000;display:none;opacity:0.4;z-index:10}
+			.window {display:none;position:absolute;background-color:#dbdbdb;width:500px;height:200px;z-index:100}
+            @media (max-width: 576px) {
+                .setDiv {padding:10px}
+                .window {overflow:hidden;overflow-y:scroll;width:100%}   
+            }
+		</style>
+    </head>
+    <body>
+        <div class="setDiv">
+            <a href="#" class="showMask">모바일 레이어 팝업 띄우기</a>
+            
+            <div class="mask"></div>
+            <div class="window">
+                <input type="button" href="#" class="close" value="팝업"/>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                but also the leap into electronic typesetting, remaining essentially unchanged. 
+                It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+                and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+                but also the leap into electronic typesetting, remaining essentially unchanged. 
+                It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+                and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+        </div>
+        <script type="text/javascript">
+            function wrapWindowByMask(){
+                var maskHeight = $(document).height();
+                var maskWidth = $(window).width();
+                $('.mask').css({'width':maskWidth,'height':maskHeight});
+                $('.mask').show();
+
+                var left = ($(window).scrollLeft() + ( $(window).width() - $('.window').width()) / 2);
+                $('.window').css({'left':left,'top':'50px'});
+                $('.window').show();
+                $('body').css({overflow:'hidden'})
+            }
+            $('.showMask').click(function(e){
+                    e.preventDefault();
+                    wrapWindowByMask();
+                });
+            $('.window .close').click(function (e) {
+                e.preventDefault();
+                $('.window, .mask').hide();
+                $('body').css({overflow:'visible'})
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE>
+<html lang="ko">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../css/base.css" rel="stylesheet">
+        <link href="../css/main.css" rel="stylesheet">
+        <script src="../js/jquery-1.12.3.min.js"></script>
+        <style>
+			.setDiv {padding-top:100px;text-align:center;height:auto;position:relative}           
+			.window {display:none;background-color:#dbdbdb;border:1px solid red;position:absolute;text-align:center;top:0;left:0}
+		</style>
+    </head>
+    <body>
+        <div class="setDiv">
+                <a href="#" class="showFull">풀 레이어팝업 띄우기</a>
+                <div class="window">
+                    <ul>
+                        <li>
+                            <a href="#">링크1</a>
+                            <a href="#">링크2</a>
+                            <a href="#">링크3</a>
+                            <a href="#">링크4</a>
+                            <a href="#">링크5</a>
+                        </li>
+                    </ul>
+                    <input type="button" href="#" class="close" value="닫기"/>
+                </div>
+            </div>
+        </body>
+        <script type="text/javascript">
+            function wrapWindowByMask(){
+                $('.showFull').click(function(e){
+                    var w = $(window).width();
+                    var h = $(document).height();
+                    $('.window').fadeIn();
+                    $('.window').attr('tabindex', '0').show().focus();
+                    $('.window').css({
+                        'width' : w,
+                        'height' : h
+                    })
+                    e.preventDefault();
+                });
+                $('.close').click(function (e) {
+                    $('.window').fadeOut();
+                    $('.showFull').focus();
+                    e.preventDefault();
+                });
+                $('.close').focus(function(){
+                    $(".window").append("<a href='javascript:void(0);' class='linkAppend'></a>");
+                    $(".linkAppend").focus(	function(){
+                        $(".window").attr('tabindex', '0').focus();
+                        $(".linkAppend").remove();
+                    });
+                })
+                
+            }
+            wrapWindowByMask()
+
+            function ResizingLayer() {
+                //화면의 높이와 너비를 구한다. 
+                var w = $(window).width();
+                var h = $(document).height();
+
+                $(".window").each(function () {
+                    $('.window').css({
+                        'width' : w,
+                        'height' : h
+                    })
+                });
+            }
+            window.onresize = ResizingLayer;
+        </script>
+    </body>
+</html>

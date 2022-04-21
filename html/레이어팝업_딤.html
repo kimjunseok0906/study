@@ -1,0 +1,79 @@
+<!DOCTYPE>
+<html lang="ko">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../css/base.css" rel="stylesheet">
+        <link href="../css/main.css" rel="stylesheet">
+        <script src="../js/jquery-1.12.3.min.js"></script>
+        <style>
+			.setDiv {padding-top:100px;text-align:center}
+            .mask {position:absolute;left:0;top:0;z-index:9999;background-color:#000;display:none;opacity:0.4;z-index:10}
+			.aa {display: none;background-color:#dbdbdb;width:500px;height:200px;border:1px solid red;z-index:100}
+		</style>
+    </head>
+    <body>
+    <div class="setDiv">
+            <a href="#" class="showMask" onClick="wrapWindowByMask($('.window01'), 'on');">팝업1</a>
+            <a href="#" class="showMask" onClick="wrapWindowByMask($('.window02'), 'on');">팝업2</a>
+            <a href="#" class="showMask" onClick="wrapWindowByMask($('.window03'), 'on');">팝업3</a>
+            <div class="mask"></div>
+            <div class="layer01">
+                <div class="aa window01">
+                    팝업1
+                    <input type="button" href="#" class="close" value="닫기" onClick="wrapWindowByMask($('.window01'), 'off');"/>
+                </div>
+            </div>
+            <div class="layer02">
+                <div class="aa window02">
+                    팝업2
+                    <input type="button" href="#" class="close" value="닫기" onClick="wrapWindowByMask($('.window02'), 'off');"/>
+                </div>
+            </div>
+            <div class="layer03">
+                <div class="aa window03">
+                    팝업3
+                    <input type="button" href="#" class="close" value="닫기" onClick="wrapWindowByMask($('.window03'), 'off');"/>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            function wrapWindowByMask(obj, s){
+                var maskHeight = $(document).height();
+                var maskWidth = $(window).width();
+                $('.mask').css({'width':maskWidth,'height':maskHeight});
+                $('.mask').show();
+
+                var top = ($(window).scrollTop() + ( $(window).height() - $('.aa').height()) / 2);
+                var left = ($(window).scrollLeft() + ( $(window).width() - $('.aa').width()) / 2);
+                obj.css({'left':left,'top':top, 'position':'absolute'});
+
+                if(s === 'on'){
+                    obj.show();
+                    $('.mask').show()
+                }
+                if(s === 'off'){
+                    obj.hide();
+                    $('.mask').hide()
+                }
+            }
+
+             function ResizingLayer() {
+                var maskHeight = $(document).height();
+                var maskWidth = $(window).width();
+                $('.mask').css({'width':maskWidth,'height':maskHeight});  
+                if($('.mask').css('display') == 'block') {
+                    $('.aa').each(function(){
+                        var top = ($(window).scrollTop() + ( $(window).height() - $(this).height()) / 2);
+                        var left = ($(window).scrollLeft() + ( $(window).width() - $(this).width()) / 2);
+                        if(top<0) top = 0;
+                        if(left<0) left = 0;
+                        $(this).css({'left':left,'top':top});
+                    });
+                }
+            }
+            window.onresize = ResizingLayer;        
+        </script>
+    </body>
+</html>
