@@ -1,0 +1,288 @@
+@charset "UTF-8";
+/* 변수 */
+.btn1 {
+  display: block;
+  width: 200px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 20px;
+  color: #444;
+  background: #fff;
+  border: 1px solid #444;
+}
+
+/* case01 선택자 */
+.case01 {
+  color: red;
+}
+
+.case01 ul {
+  border: 1px solid blue;
+}
+
+.case01 ul > li {
+  background: pink;
+}
+
+.case01 ul > li a {
+  text-decoration: none;
+}
+
+.case01 ul > li a:hover {
+  color: red;
+}
+
+.case01 ul > li a.bbb {
+  font-size: 20px;
+}
+
+.case01 ul > li .bbb {
+  display: block;
+  text-indent: 20px;
+}
+
+.case01 ul > li:last-child {
+  border: 1px solid yellow;
+}
+
+/* case02 mixin */
+.case02 {
+  width: 400px;
+  height: 200px;
+  border: 1px solid #303030;
+}
+
+.case02:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.case02 p {
+  border: 1px solid red;
+}
+
+.case02 span {
+  border: 1px solid blue;
+}
+
+/* case03 문자보간 - 변수 문자표기방법 */
+.case03 {
+  border-right: 10px solid red;
+}
+
+.case03 p {
+  border-left: 5px solid blue;
+}
+
+/* case04 for문 */
+.case04 li {
+  text-indent: 30px;
+}
+
+.case04 .ico1 {
+  color: red;
+}
+
+.case04 li:nth-child(1):before {
+  content: "제목1";
+}
+
+.case04 li {
+  text-indent: 30px;
+}
+
+.case04 .ico2 {
+  color: red;
+}
+
+.case04 li:nth-child(2):before {
+  content: "제목2";
+}
+
+.case04 li {
+  text-indent: 30px;
+}
+
+.case04 .ico3 {
+  color: red;
+}
+
+.case04 li:nth-child(3):before {
+  content: "제목3";
+}
+
+.case04 li {
+  text-indent: 30px;
+}
+
+.case04 .ico4 {
+  color: red;
+}
+
+.case04 li:nth-child(4):before {
+  content: "제목4";
+}
+
+.case04 li {
+  text-indent: 30px;
+}
+
+.case04 .ico5 {
+  color: red;
+}
+
+.case04 li:nth-child(5):before {
+  content: "제목5";
+}
+
+.case04 li {
+  text-indent: 30px;
+}
+
+.case04 .ico6 {
+  color: red;
+}
+
+.case04 li:nth-child(6):before {
+  content: "제목6";
+}
+
+/* case05 each문 */
+.case5 .ico_book {
+  color: blueviolet;
+}
+
+.case5 .ico_zoom {
+  color: blueviolet;
+}
+
+.case5 .ico_phone {
+  color: blueviolet;
+}
+
+h1 {
+  font-size: 100px;
+}
+
+h2 {
+  font-size: 50px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+/* case06 extand 쉼표구분 */
+.case6 div > div {
+  width: 1200px;
+  height: 300px;
+  margin: 0 auto;
+  color: #fff;
+}
+
+.case6 .visual {
+  background: pink;
+  height: 300px;
+}
+
+.case6 .main {
+  background: blue;
+  height: 300px;
+}
+
+.case6 .footer {
+  background: blueviolet;
+  height: 300px;
+}
+
+/* case07 조건문 */
+/* 조건문 true, false로 조절 */
+.case7 .btn {
+  padding: 0 20px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  background: #000;
+  color: #fff;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+
+.case7 div {
+  width: 300px;
+  height: 300px;
+  background: #000;
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+}
+
+/* case08 mixin 응용 */
+.case8 {
+  border: 1px solid red;
+  background: red;
+}
+
+.case8:after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+.case8 > div {
+  float: left;
+}
+
+.case8 .ell {
+  overflow: hidden;
+  display: block;
+  width: 150px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.case8 .b {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  width: 100px;
+  height: 63px;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+}
+
+/* case09 mixin 응용2 */
+/* @mixin center($w){
+	position: absolute;
+	left:50%;
+	top:50%;
+	width:$w;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+}*/
+.case9 {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  width: 300px;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  border: 1px solid red;
+}
+/*# sourceMappingURL=test.css.map */

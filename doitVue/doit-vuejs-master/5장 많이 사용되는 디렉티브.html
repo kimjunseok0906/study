@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>디렉티브</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+  </head>
+  <body>
+	<div id="app">
+		<a v-if="flag">두잇</a>
+		<ul>
+			<li v-for="system in systems">{{system}}</li>
+		</ul>
+		<p v-show="flag">두잇</p>
+		<h5 v-bind:id="uid">입문</h5>
+		<button v-on:click="popup(10)">경고창버튼</button>
+	</div>
+    <script>
+		new Vue({
+			el: '#app',
+			data: {
+				flag: true,
+				systems: ['android', 'ios', 'window'],
+				uid: 10
+			},
+			methods: {
+				popup: function(num){
+					return alert('경고창 표시' + num);
+				}
+			}
+		})
+    </script>
+  </body>
+</html>

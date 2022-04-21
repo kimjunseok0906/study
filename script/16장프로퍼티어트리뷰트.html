@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		
+	</style>
+</head>
+<body>
+	모든 객체는 [[Prototype]] 이라는 내부 슬롯을 가진다.
+	__proto__를 통해 간접적으로접근 가능
+	<script>
+
+		const person = {
+			name: 'kim'
+		}
+		console.log(Object.getOwnPropertyDescriptor(person,'name'));
+	</script>
+</body>
+</html>

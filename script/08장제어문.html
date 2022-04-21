@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var year = 2000;
+		var month = 2;
+		var days = 0;
+
+		switch(month){
+			case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+			days = 31;
+			break;
+			
+			case 4: case 6: case 9: case 11: 
+			days = 30;
+			break;
+
+			case 2: 
+			days = ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) ? 29 : 28;
+			break;
+			default: 
+			console.log('Invalid month');
+		}
+		console.log(days)
+
+		for(let i = 1; i >= 0; i--){
+			console.log(i);
+		}
+
+		// for문 중첩
+		for(let j = 1; j <= 6; j++){
+			for(let k = 5; k >= 1; k--){
+				if(j + k === 7) console.log(`[${j}, ${k}]`);
+			}
+		}
+
+		let count = 0;
+		while(count < 3){
+			console.log(count);
+			count++
+		}
+
+		// 레이블 문 탈출 예
+		foo: {
+			console.log(1);
+			break foo;
+			console.log(2);
+		}
+		console.log('Done!');
+
+		
+		const string = 'Hello Worle';
+		const search = 'l';
+		const search2 = 'o';
+		let index;
+		let num = 0;
+
+		// 특정 문자의 인덱스(위치) 검색하는 예
+		for(let i = 0; i <= string.length; i++){
+			if(string[i] === search){
+				index = i;
+				break;
+			}
+		}
+		console.log(index);
+		console.log(string.indexOf(search));
+
+		// 특정 문자 갯수 
+		for(let i = 0; i <= string.length; i++){
+			if(string[i] === search2){
+				num++;
+			}
+		}
+		console.log(num);
+	</script>
+</body>
+</html>

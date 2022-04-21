@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		
+	</style>
+</head>
+<body>
+	<ul>
+		<li>aa</li>
+		<li>bb</li>
+		<li>cc</li>
+		<li>dd</li>
+		<li>ee</li>
+		<li>ff</li>
+	</ul>
+	<script>
+		const list = document.querySelectorAll('li');
+		(function(){
+			list.forEach(function(opt,v){
+				function ck(){
+					console.log(opt.innerHTML)
+				}
+				console.log(opt,v)
+				opt.addEventListener('click', ck)
+			})
+		}());
+
+		var sub = function (x,y){
+			return x + y;
+		}
+		console.log(sub(2,5));
+
+		//즉시실행함수
+		(function(){
+			var a = 5;
+			var b = 5;
+			return console.log(a*b);
+		}());
+
+		// 재귀함수 (자기 자신을 호출하는 함수)
+
+		// 반복문 사용
+		function countDown(n){
+			for(var i = n; i >= 0; i--){
+				console.log(i);
+			}
+		}
+		countDown(10);
+
+		//재귀함수 사용
+		function countUp(n){
+			if(n > 10){
+				return;
+			}
+			console.log(n);
+			countUp(n + 1);
+		}
+		countUp(0);
+
+		// var는 함수내부만 지역변수로 인정함
+	</script>
+</body>
+</html>

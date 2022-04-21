@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>액시오스</title>
+  </head>
+  <body>
+    <div id="app">
+		<button v-on:click="getData">프레임워크 목록 가져오기</button><br>
+		axios.get('URL주소').then().catch()<br>
+		axios.post('URL주소').then().catch()<br>
+		정상로직일떈 then, 데이터를 받아올때 오류가 생기면 catch()실행
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+		new Vue({
+			el: '#app',
+			methods: {
+				getData: function(){
+					axios.get(`https://raw.githubusercontent.com/joshua1988/doit-vuejs/master/data/demo.json`)
+					.then(function(response){
+						console.log(response)
+					})
+				}
+			}
+		})
+    </script>
+  </body>
+</html>

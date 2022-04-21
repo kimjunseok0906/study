@@ -1,0 +1,192 @@
+$gray:#444;
+$white:#fff;
+$red:red;
+$blue:blue;
+@mixin clear {
+	&:after {content:""; display:block; clear:both}
+}
+
+/* 변수 */
+.btn1 {display:block; width:200px; height:50px; line-height: 50px; font-size: 20px; color: $gray; background: $white;
+border: 1px solid $gray;}
+
+/* case01 선택자 */
+.case01 {color:$red;
+	ul {border:1px solid $blue;
+		> li {background:pink;
+			a{text-decoration:none;
+				&:hover {color:$red}
+				&.bbb {font-size:20px}
+			}
+			.bbb {display:block;text-indent: 20px}
+			&:last-child {border:1px solid yellow}
+		}
+	}
+}
+
+/* case02 mixin */
+@mixin box($w, $h) {
+	width:$w; height:$h
+}
+@mixin border($color) {
+	border: 1px solid $color
+}
+
+.case02 {@include box(400px, 200px); @include border(#303030); @include clear;
+	p {@include border($red)}
+	span {@include border($blue)}
+}
+
+/* case03 문자보간 - 변수 문자표기방법 */
+
+@mixin bx($position, $wid, $color){
+	border-#{$position}:$wid solid $color;
+}
+.case03 {@include bx(right, 10px, red);
+	p {@include bx(left, 5px, blue)}
+}
+
+/* case04 for문 */
+@for $i from 1 to 7 {
+	.case04 li {text-indent: 30px;}
+	.case04 .ico#{$i} {color:red}
+	.case04 li:nth-child(#{$i}):before {content:"제목#{$i}"}
+}
+
+/* case05 each문 */
+@each $item in book, zoom, phone {
+	.case5 .ico_#{$item} {
+		color:blueviolet;
+	}
+}
+
+$heading: (
+	h1: 100px,
+	h2: 50px,
+	h3: 20px
+);
+
+@each $ele, $fs in $heading {
+	#{$ele} {
+		font-size:$fs;
+	}
+}
+
+/* case06 extand 쉼표구분 */
+
+%m0auto {width:1200px; height:300px; margin:0 auto; color:#fff}
+
+.case6 div > div {@extend %m0auto}
+.case6 .visual {background:pink; height: 300px;}
+.case6 .main {background:blue; height: 300px;}
+.case6 .footer {background:blueviolet; height: 300px;}
+
+/* case07 조건문 */
+@mixin btn_radius($h, $radius:true){
+	padding: 0 20px; height:$h; line-height:$h; text-align:center; background:#000; color:#fff;
+	@if $radius {
+		border-radius:$h / 2;
+		-webkit-border-radius:$h / 2	;
+		-moz-border-radius:$h / 2	;
+		-ms-border-radius:$h / 2	;
+		-o-border-radius:$h / 2	;
+	} @else {
+		border:1px solid red
+	}
+}
+/* 조건문 true, false로 조절 */
+.case7 .btn {@include btn_radius(30px, true)}
+
+@mixin position($x, $y, $z) {
+	position:absolute; left: $x; top: $y; z-index:$z;
+	@if $x == 50% and $y == 50% {
+		transform: translate(-50%, -50%);
+		-webkit-transform: translate(-50%, -50%);
+		-moz-transform: translate(-50%, -50%);
+		-ms-transform: translate(-50%, -50%);
+		-o-transform: translate(-50%, -50%);
+	}@else if $x == 50%{
+		transform: translateX(-50%);
+		-webkit-transform: translateX(-50%);
+		-moz-transform: translateX(-50%);
+		-ms-transform: translateX(-50%);
+		-o-transform: translateX(-50%);
+}@else if $y == 50%{
+		transform: translateY(-50%);
+		-webkit-transform: translateY(-50%);
+		-moz-transform: translateY(-50%);
+		-ms-transform: translateY(-50%);
+		-o-transform: translateY(-50%);
+}
+}
+.case7 {
+	div {
+		width: 300px; height: 300px; background: #000; @include position(null, 50%, 2)
+	}
+}
+
+/* case08 mixin 응용 */
+@mixin clear {
+	&:after {display:block; clear:both; content:""}
+}
+
+.case8 {border:1px solid $red; background:$red;
+	@include clear;
+	> div {float:left}
+}
+
+@mixin ellipsis($w) {
+	overflow:hidden; display:block; width:$w; text-overflow:ellipsis; white-space: nowrap;
+}
+
+.case8 .ell{@include ellipsis(150px)}
+
+@mixin ellipsis2($w, $h, $line) {
+	overflow: hidden; display:-webkit-box; -webkit-line-clamp:$line; width:$w; height:$h; -webkit-box-orient:vertical; text-overflow: ellipsis;
+}
+
+.case8 .b {@include ellipsis2(100px, 63px, 3)}
+
+/* case09 mixin 응용2 */
+/* @mixin center($w){
+	position: absolute;
+	left:50%;
+	top:50%;
+	width:$w;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+}*/
+//.case9 {@include position(500px); height:200px; border:1px solid red}
+@mixin position($x, $y, $z, $w){
+	position:absolute;
+	left:$x;
+	top:$y;
+	z-index:$z;
+	width:$w;
+	@if $x == 50% and $y == 50% {
+		transform: translate(-50%, -50%);
+		-webkit-transform: translate(-50%, -50%);
+		-moz-transform: translate(-50%, -50%);
+		-ms-transform: translate(-50%, -50%);
+		-o-transform: translate(-50%, -50%);
+	}
+	@else if $x == 50% {
+		transform:translateX(-50%);
+		-webkit-transform:translateX(-50%);
+		-moz-transform:translateX(-50%);
+		-ms-transform:translateX(-50%);
+		-o-transform:translateX(-50%);
+	}@else if $y == 50% {
+		transform: translateY(-50%);
+		-webkit-transform: translateY(-50%);
+		-moz-transform: translateY(-50%);
+		-ms-transform: translateY(-50%);
+		-o-transform: translateY(-50%);
+	}
+}
+.case9 {@include position(50%, 50%, 2, 300px); border:1px solid $red}
+
+

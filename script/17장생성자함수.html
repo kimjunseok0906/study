@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		
+	</style>
+</head>
+<body>
+	<script>
+		// 빈 객체의 생성
+		const person = new Object();
+
+		// 프로퍼티 추가
+		person.name = 'Lee';
+		person.sayHello = function(){
+			console.log('Hi! my name is' + this.name);
+		}
+		console.log(person)
+		person.sayHello();
+
+		// 함수는 객체다
+		function foo(){
+
+		}
+
+		// 함수는 객체이므로 프로퍼티를 소유할 수 있다.
+		foo.prop = 10;
+
+		// 함수는 객체이므로 메소드를 소유할 수 있다.
+		foo.method = function(){
+			console.log(this.prop)
+		}
+
+		foo.method();
+	</script>
+</body>
+</html>

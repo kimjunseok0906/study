@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var circle = {
+			radius: 5, // 프로퍼티
+			getDia: function(){ // 메서드
+				return 2 * this.radius; //this는 circle 가리킨다.
+			}
+		};
+		console.log(circle.getDia()); // 함수 10
+
+		// 네이밍 규칙 미준수 - 는 안됨
+		var person = {
+			'last-name': 'lee'
+		}
+		console.log(person['last-name']); // 네이밍규칙 준수하지 않음 이름은 대괄호법으로 표시
+
+		//ES6 축약 표현
+		//ES5
+		var x = 1, z = 2;
+		var obj = {
+			x: x,
+			z: z
+		};
+		console.log(obj);
+
+		//ES6
+		var a = 3, b = 4;
+		var obj = {a,b};
+		console.log(obj);
+
+		//ES5
+		var prefix = 'prop';
+		var i = 0;
+		var obj = {};
+
+		obj[prefix + ' - ' + ++i] = i;
+		obj[prefix + ' - ' + ++i] = i;
+		obj[prefix + ' - ' + ++i] = i;
+
+		console.log(obj);
+
+		//ES6
+		var prefix = 'prop';
+		var i = 10;
+		var obj = {};
+
+		obj[`${prefix} - ${++i}`] = i;
+		obj[`${prefix} - ${++i}`] = i;
+		obj[`${prefix} - ${++i}`] = i;
+		console.log(obj);
+
+		//ES5
+		var obj = {
+			name: 'lee',
+			sayHi: function(){
+				console.log('Hi ' + this.name);
+			}
+		};
+		obj.sayHi();
+
+		//ES6
+		var obj = {
+			name: 'lee',
+			sayHi(){
+				console.log('Hi ' + this.name);
+			}
+		};
+		obj.sayHi();
+	</script>
+</body>
+</html>

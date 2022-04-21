@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// 명시적 타입 변환
+		var x = 10;
+		var str = x.toString();
+		console.log(typeof str, str);
+		console.log(typeof x, x);
+
+		// 암묵적 타입 변환
+		var x = 10;
+		var str = x + ''; // 숫자 + 문자 = 문자
+		console.log(typeof str, str);
+		console.log(typeof x, x);
+		
+		// 논리 연산자 &&
+		var elem = null;
+		var value = elem && elem.value;
+		console.log(value); // null
+
+		// 논리 연산자 ||
+		var foo = null;
+		var value = foo || 'string zzz';
+		console.log(value); // 'string zzz'
+
+		// ES11 옵셔널 체이닝 .?
+		var elem = null;
+		var value = elem?.value;
+		console.log(value); // 좌항이 null 또는 undefined 일 때 undefined 반환
+
+		// ES11 null 병합 연산자 ??
+		var elem = 'ㅋㅋ';
+		var value = elem??value;
+		console.log(value); // 좌항이 false라도 null 또는 undefined 아닐 때 좌항 반한
+	</script>
+</body>
+</html>
