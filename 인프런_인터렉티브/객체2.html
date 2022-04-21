@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>객체</title>
+	<style>
+		* {margin:0; padding:0}
+		
+	</style>
+</head>
+<body>
+	
+	<script>
+		// 생성자함수와 프로토타입은 쌍으로 생각해야함.
+
+		// 생성자함수
+		function Person(nikname, age){
+			this.nikname = nikname;
+			this.age = age;
+			// 생성자 함수 안에 다른 내용으로 들어가는건 this로 제어
+		}
+
+		Person.prototype.introduce = function(){
+			console.log('안녕하세요? 저는' + this.nikname + '이에요.' + this.age)
+			// 같은 내용인 메소드는 prototype으로 제어
+		}
+
+		// 인스턴스
+		const person1 = new Person('일분이', 10);
+		const person2 = new Person('이분이', 8);
+
+		person1.introduce()
+		person2.introduce()
+	</script>
+</body>
+</html>

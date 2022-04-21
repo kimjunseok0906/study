@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>자바스크립트</title>
+	<style>
+		.characters {background:yellow}
+		.ilbuni {display:inline-block; width:100px}
+		img {width:100%}
+		.special {border:10px solid red}
+	</style>
+	<script>
+		// // window.addEventListener('load', function(){ 이미지까지 로드 끝날때까지 기다림
+		// window.addEventListener('DOMContentLoaded', function(){ //돔만 로드될때 시작 ie9부터 지원 제이쿼리랑 같음
+		// 	const ilbuni = document.querySelector('.ilbuni.c');
+			
+		// 	function clickInbuniHandler(){
+		// 		ilbuni.classList.toggle('special');
+		// 	}
+
+		// 	ilbuni.addEventListener('click', clickInbuniHandler)
+		// })
+	</script>
+</head>
+<body>
+	<div class="characters">
+		<div class="ilbuni a">
+			<img src="images/ilbuni_0.png" alt="">		
+		</div>
+		<div class="ilbuni b">
+			<img src="images/ilbuni_1.png" alt="">		
+		</div>
+		<div class="ilbuni c">
+			<img src="images/ilbuni_2.png" alt="">		
+		</div>
+	</div>
+	<div class="ilbuni d">
+		<img src="images/ilbuni_3.png" alt="">		
+	</div>
+
+	<script>
+		// 전역변수 지양하기 위해 즉시실행 함수 사용
+		(function() {
+			const ilbuni = document.querySelector('.ilbuni.c');
+		
+			function clickInbuniHandler(){
+				ilbuni.classList.toggle('special');
+			}
+
+			ilbuni.addEventListener('click', clickInbuniHandler);
+		})();
+	</script>
+</body>
+</html>

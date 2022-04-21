@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>setTimeout</title>
+	<style>
+		* {margin:0; padding:0}
+		.btn {
+			font-size: 2rem;
+		}
+	</style>
+</head>
+<body>
+	<button class="btn">취소</button>
+	<script>
+		let timeId;
+		const btn = document.querySelector('.btn');
+
+		function sample(){
+			console.log('sample!');
+		}
+
+		//setInterval
+		timeId = setInterval(sample, 60/1);
+		btn.addEventListener('click', function(){
+		 	clearInterval(timeId);
+		})
+		
+		
+		// setTimeout
+		// timeId = setTimeout(sample, 3000);
+		
+		// btn.addEventListener('click', function(){
+		// 	clearTimeout(timeId);
+		// })
+
+		// clearTimeout 취소
+	</script>
+</body>
+</html>

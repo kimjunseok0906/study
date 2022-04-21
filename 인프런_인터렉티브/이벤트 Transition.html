@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>스크롤</title>
+	<style>
+		* {margin:0; padding:0}
+		.ball {
+			width: 30px;
+			height: 30px;
+			margin-top:-15px;
+			margin-left:-15px;
+			background: red;
+			border-radius: 50%;
+			transition: 1s;
+		}
+
+		.ball.end {
+			background: dodgerblue;
+		}
+	</style>
+</head>
+<body>
+	<div class="ball">
+
+	</div>
+	<script>
+		const ballElem = document.querySelector('.ball');
+
+		window.addEventListener('click', function(e){
+			ballElem.style.transform = 'translate(' + e.clientX + 'px, ' +  e.clientY + 'px)';
+		});
+
+		// transiton 끝나는 이벤트 transitionstart도 있음
+		ballElem.addEventListener('transitionend', function(e){
+			ballElem.classList.add('end');
+			console.log(e.elapsedTime);
+			console.log(e.propertyName);
+		});
+	</script>
+</body>
+</html>

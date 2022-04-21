@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>객체</title>
+	<style>
+		* {margin:0; padding:0}
+		
+	</style>
+</head>
+<body>
+	
+	<script>
+		const person = {
+			nickname: '일분이',
+			age: 10,
+			introduce: function(){
+				console.log('안녕하세요? 저는' + this.nickname + '이에요.')
+			}
+		}
+
+		const person2 = {
+			nickname: '이분이',
+			age: 8,
+			introduce: function(){
+				console.log('안녕하세요? 저는' + this.nickname + '이에요.')
+			}
+		}
+		person.introduce();
+		person2.introduce();
+		// this는 주체객체를 가리킴
+	</script>
+</body>
+</html>

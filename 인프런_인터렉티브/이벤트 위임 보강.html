@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Interactive Web</title>
+    <style>
+		.menu {display: flex; background:#eee}
+        .menu-btn {
+			display:flex;
+			align-items: center;
+			margin: 0 1em;
+			padding:2em;
+			background:#fff000
+		}
+		.btn-label {
+			pointer-events: none; 
+		}
+		.icon {
+			width:30px;
+			pointer-events: none;
+		}
+    </style>
+</head>
+<body>
+    <div class="menu">
+		<div class="menu-btn" data-value="1">
+			<img src="images/ilbuni_0.png" alt="" class="icon">
+			<span class="btn-label">일분이 1</span>
+		</div>
+		<div class="menu-btn" data-value="2">
+			<img src="images/ilbuni_1.png" alt="" class="icon">
+			<span class="btn-label">일분이 2</span>
+		</div>
+		<div class="menu-btn" data-value="3">
+			<img src="images/ilbuni_2.png" alt="" class="icon">
+			<span class="btn-label">일분이 3</span>
+		</div>
+	</div>
+
+    <script>
+		const menu = document.querySelector('.menu');
+		
+		function clickHandler(e) {
+			let elem = e.target;
+			console.log(elem.dataset.value)
+			// console.log(e.target.getAttribute('data-value'))
+			// console.log(e.target.dataset.value)
+		}
+
+		
+		menu.addEventListener('click', clickHandler)
+    </script>
+</body>
+</html>

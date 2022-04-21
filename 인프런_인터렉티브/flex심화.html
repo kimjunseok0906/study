@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Flex</title>
+	<style>
+		* {margin:0; padding:0}
+		.container {
+			display: flex;
+			/* flex-direction: row; */
+			/* flex-wrap: wrap; */
+			/* justify-content: space-between; */
+			/* align-items: center; */
+			/* align-content: space-between; */
+			height:100vh;
+			background: lightgray;
+		}
+		.item {
+			/* flex-basis:0; */
+			background:yellow;
+		}
+		.item:nth-child(odd) {background:red}
+		.item:nth-child(1) {
+			/* flex-grow: 1;
+			flex-shrink: 1; */
+			/* flex:1 */
+			width:200px;
+			/* align-self: flex-start */
+			/* order:3; */
+		}
+		.item:nth-child(2) {
+			/* flex-grow: 2;
+			flex-shrink: 2; */
+			flex:1;
+			/* align-self: center */
+			/* order:1; */
+		}
+		.item:nth-child(3) {
+			/* flex-grow: 1;
+			flex-shrink: 1; */
+			/* flex:1 */
+			/* order:2 */
+		}
+		img {width:100px; height:100px}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="item">
+			1<img src="images/pngegg.png" alt="">
+			<p>A</p>
+			<p>A</p>
+			<p>A</p>
+		</div>
+		<div class="item">
+			2<img src="images/pngegg.png" alt="">
+			<p>BBBBBBBBBBBBB</p>
+		</div>
+		<div class="item">
+			3<img src="images/pngegg.png" alt="">
+			<p>CCC</p>
+		</div>
+	</div>
+</body>
+</html>

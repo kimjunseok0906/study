@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>자바스크립트</title>
+	<style>
+		.characters {display:flex; align-items: center; justify-content: space-around; background:yellow}
+		.ilbuni {display:inline-block; width:100px; cursor: pointer;}
+		img {width:100%}
+		.special {border:10px solid red}
+	</style>
+</head>
+<body>
+	<div class="characters">
+		<div class="ilbuni a">
+			<img src="images/ilbuni_0.png" alt="">		
+		</div>
+		<div class="ilbuni b">
+			<img src="images/ilbuni_1.png" alt="">		
+		</div>
+		<div class="ilbuni c">
+			<img src="images/ilbuni_2.png" alt="">		
+		</div>
+		<div class="ilbuni d">
+			<img src="images/ilbuni_3.png" alt="">		
+		</div>
+	</div>
+
+	<script>
+		// 전역변수 지양하기 위해 즉시실행 함수 사용
+		(function() {
+			const ilbuni = document.querySelector('.characters');
+		
+			function clickHandler(e){
+				// console.log(this) // 이벤트 등록 객제 : ilbuni
+				// console.log(e.currentTarget)
+				console.log(e.target) // 클릭영역
+			}
+
+			ilbuni.addEventListener('click', clickHandler);
+		})();
+	</script>
+</body>
+</html>
